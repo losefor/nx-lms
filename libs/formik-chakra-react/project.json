@@ -1,0 +1,43 @@
+{
+  "root": "libs/formik-chakra-react",
+  "sourceRoot": "libs/formik-chakra-react/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/formik-chakra-react",
+        "tsConfig": "libs/formik-chakra-react/tsconfig.lib.json",
+        "project": "libs/formik-chakra-react/package.json",
+        "entryFile": "libs/formik-chakra-react/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/formik-chakra-react/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/formik-chakra-react/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/formik-chakra-react"],
+      "options": {
+        "jestConfig": "libs/formik-chakra-react/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
