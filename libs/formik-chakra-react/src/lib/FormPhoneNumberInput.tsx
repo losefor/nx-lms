@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import {
   Input,
   FormControl,
   FormLabel,
   InputGroup,
-  InputLeftAddon,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import { useFormikContext } from "formik";
+  InputRightAddon,
+} from '@chakra-ui/react';
+import { useFormikContext } from 'formik';
 
 interface Props {
   name: string;
@@ -35,12 +35,12 @@ export const FormPhoneNumberInput = ({
     <FormControl isInvalid={error}>
       <FormLabel>{label}</FormLabel>
       <InputGroup dir="ltr">
-        <InputLeftAddon children="+964" />
+        <InputRightAddon children="+964" />
         <Input
           onChange={(e) => setFieldValue(name, e.target.value)}
           placeholder={placeholder}
           value={(values as any)[name]}
-          type={"number"}
+          type={'number'}
           prefix={prefix}
           suffix={suffix}
         />

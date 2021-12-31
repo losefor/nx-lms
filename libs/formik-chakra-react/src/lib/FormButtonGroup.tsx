@@ -4,9 +4,9 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-} from "@chakra-ui/react";
-import React from "react";
-import { useFormikContext } from "formik";
+} from '@chakra-ui/react';
+import React from 'react';
+import { useFormikContext } from 'formik';
 
 interface Props {
   name: string;
@@ -30,21 +30,21 @@ export function FormButtonGroup(props: Props) {
   return (
     <FormControl isInvalid={error}>
       <FormLabel>{props.label}</FormLabel>
-      <ButtonGroup isAttached variant={"outline"} dir="ltr" width={"full"}>
+      <ButtonGroup isAttached variant={'outline'} width={'full'}>
         {props.buttons.map((button) => (
           <Button
-            bg={defaultValue === button.value ? props.primaryColor : ""}
-            color={defaultValue === button.value ? "white" : ""}
+            bg={defaultValue === button.value ? props.primaryColor : ''}
+            color={defaultValue === button.value ? 'white' : ''}
             borderColor={
-              defaultValue === button.value ? props.primaryColor : "inherit"
+              defaultValue === button.value ? props.primaryColor : 'inherit'
             }
-            width={"full"}
+            width={'full'}
             onClick={() => onChangeHandler(button.value)}
             _hover={{
               bg:
                 defaultValue === button.value
                   ? props.primaryDarkColor
-                  : "inherit",
+                  : 'inherit',
             }}
           >
             {button.name}

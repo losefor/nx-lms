@@ -66,12 +66,7 @@ export default function Login() {
           p={8}
         >
           <Stack spacing={'6'}>
-            <ButtonGroup
-              isAttached
-              variant={'outline'}
-              dir="ltr"
-              width={'full'}
-            >
+            <ButtonGroup isAttached variant={'outline'} width={'full'}>
               <Button
                 bg={loginType === 'EMAIL' ? colors.primary : ''}
                 color={loginType === 'EMAIL' ? 'white' : ''}
