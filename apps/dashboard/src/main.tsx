@@ -6,6 +6,7 @@ import App from './app/app';
 
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { RecoilRoot } from 'recoil';
+import { ConfigProvider } from 'antd';
 
 const direction = 'rtl';
 
@@ -16,9 +17,11 @@ ReactDOM.render(
   <StrictMode>
     <RecoilRoot>
       <Router>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
+        <ConfigProvider direction="rtl">
+          <ChakraProvider theme={theme}>
+            <App />
+          </ChakraProvider>
+        </ConfigProvider>
       </Router>
     </RecoilRoot>
   </StrictMode>,
