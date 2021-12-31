@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-lms/chakra-hoc": ["libs/chakra-hoc/src/index.ts"],
       "@nx-lms/formik-chakra-react": ["libs/formik-chakra-react/src/index.ts"]
     }
   },

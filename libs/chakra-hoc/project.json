@@ -1,0 +1,43 @@
+{
+  "root": "libs/chakra-hoc",
+  "sourceRoot": "libs/chakra-hoc/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/chakra-hoc",
+        "tsConfig": "libs/chakra-hoc/tsconfig.lib.json",
+        "project": "libs/chakra-hoc/package.json",
+        "entryFile": "libs/chakra-hoc/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/chakra-hoc/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/chakra-hoc/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/chakra-hoc"],
+      "options": {
+        "jestConfig": "libs/chakra-hoc/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
