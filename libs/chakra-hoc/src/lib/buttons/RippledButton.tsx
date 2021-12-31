@@ -1,12 +1,8 @@
-import React from 'react';
 import { Button, ButtonProps } from '@chakra-ui/react';
+import { colorParser } from '../utils/colorParser';
 
 export function RippledButton(props: ButtonProps) {
-  const colorData = props.bgColor
-    ? (props.bgColor as string).split('.')
-    : ['teal', '400'];
-  const color = colorData[0];
-  const saturation = parseInt(colorData[1]);
+  const { color, saturation } = colorParser(props.bgColor as string);
 
   return (
     <Button

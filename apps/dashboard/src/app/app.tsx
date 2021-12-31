@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Sidebar } from '@nx-lms/chakra-hoc';
 import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
+import { DashbaordSidebar } from './components/layouts/Sidebar';
 
 function App() {
   useEffect(() => {
@@ -12,7 +13,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to={'/admin/dashboard'} />} />
-      <Route element={<Sidebar />}>
+      <Route element={<DashbaordSidebar />}>
         {dashRoutes.map((route, index) => {
           const path = route.layout + route.path;
           return (

@@ -1,14 +1,16 @@
-import { Flex, Icon, Box } from "@chakra-ui/react";
-import { useMatch, useResolvedPath, useNavigate } from "react-router-dom";
-import { colors } from "../../../config/colors";
+import { Flex, Icon, Box } from '@chakra-ui/react';
+import { useMatch, useResolvedPath, useNavigate } from 'react-router-dom';
+import { colorParser } from '../utils/colorParser';
 
 export const NavItemWithPadding = (props: any) => {
   const { icon, children, to, ...rest } = props;
   const navigate = useNavigate();
 
+  const { color, saturation } = colorParser(props.bgColor);
+
   // Check if the current NavItem match
-  let resolved = useResolvedPath(to);
-  let match = useMatch({ path: resolved.pathname, end: true });
+  const resolved = useResolvedPath(to);
+  const match = useMatch({ path: resolved.pathname, end: true });
   return (
     <Flex
       align="center"
@@ -19,11 +21,11 @@ export const NavItemWithPadding = (props: any) => {
       my="1"
       rounded="lg"
       cursor="pointer"
-      color={match ? "white" : "inherit"}
-      bg={match ? colors.primary : "inherit"}
+      color={match ? 'white' : 'inherit'}
+      bg={match ? `${color}.${saturation}` : 'inherit'}
       _hover={{
-        bg: match ? colors.primaryDark : "gray.100",
-        color: match ? "white" : "inherit",
+        bg: match ? `${color}.${saturation + 100}` : 'gray.100',
+        color: match ? 'white' : 'inherit',
       }}
       onClick={() => navigate(to)}
       role="group"
@@ -34,14 +36,14 @@ export const NavItemWithPadding = (props: any) => {
       {icon && (
         <Box
           me="2"
-          bg={match ? "white" : "unset"}
-          rounded={match ? "lg" : "unset"}
+          bg={match ? 'white' : 'unset'}
+          rounded={match ? 'lg' : 'unset'}
           boxSize="6"
           align="center"
         >
           <Icon
             boxSize="4"
-            color={match ? colors.primary : "unset"}
+            color={match ? `${color}.${saturation}` : 'unset'}
             as={icon}
           />
         </Box>

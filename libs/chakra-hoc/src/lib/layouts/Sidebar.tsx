@@ -7,7 +7,6 @@ import {
   DrawerOverlay,
   Flex,
   IconButton,
-  Text,
   useColorModeValue,
   useDisclosure,
   Menu,
@@ -18,119 +17,36 @@ import {
 } from '@chakra-ui/react';
 import { FiLogOut, FiMenu, FiSettings } from 'react-icons/fi';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { dashRoutes } from '../../../../../apps/dashboard/src/router';
-import { NavItemWithPadding } from '../../../../../apps/dashboard/src/app/components/sidebar/navItems/NavItemWithPadding';
-import { NavItemDefault } from '../../../../../apps/dashboard/src/app/components/sidebar/navItems/NavItemDefault';
 
 interface Props {
   children?: React.ReactNode;
+  sidebarContent?: React.ReactNode;
 }
 
-export function Sidebar({ children }: Props) {
+export function Sidebar({ children, sidebarContent }: Props) {
   const navigate = useNavigate();
   const sidebar = useDisclosure();
 
-  // Select the theme [ 0 , 1 ]
-  const navItems = [NavItemDefault, NavItemWithPadding];
-  const NavItem = navItems[0];
-
-  const SidebarContent = (props: any) => (
-    <Box
-      as="nav"
-      pos="fixed"
-      top="0"
-      right="0"
-      zIndex="sticky"
-      h="full"
-      pb="10"
-      overflowX="hidden"
-      overflowY="auto"
-      bg={useColorModeValue('white', 'gray.800')}
-      borderColor={useColorModeValue('inherit', 'gray.700')}
-      borderLeftWidth="1px"
-      w="60"
-      {...props}
-    >
-      <Flex px="4" py="5" align="center">
-        <Text
-          fontSize="2xl"
-          ml="2"
-          color={useColorModeValue('brand.500', 'white')}
-          fontWeight="semibold"
-          textAlign="center"
-        >
-          اداره المكتبات
-        </Text>
-        (LMS)
-      </Flex>
-      <Flex
-        direction="column"
-        as="nav"
-        fontSize="sm"
-        color="gray.600"
-        aria-label="Main Navigation"
-      >
-        {dashRoutes.map((route, index) => {
-          const path = route.layout + route.path;
-
-          return (
-            <NavItem to={path} icon={route.icon} key={index}>
-              {route.arName}
-            </NavItem>
-          );
-        })}
-        {/* <NavItem to="/universities" icon={FaBuilding}>
-          الجامعات
-        </NavItem>
-        <NavItem to="/permissions" icon={HiCollection}>
-          صلاحيات
-        </NavItem>
-        <NavItem to="/statistics" icon={FaClipboardCheck}>
-          احصائيات
-        </NavItem>
-        <NavItem icon={HiCode} onClick={integrations.onToggle}>
-          Integrations
-          <Icon
-            as={MdKeyboardArrowLeft}
-            ml="auto"
-            transform={integrations.isOpen && ("rotate(-90deg)" as any)}
-          />
-        </NavItem>
-        <Collapse in={integrations.isOpen}>
-          <NavItem pl="12" py="2">
-            Shopify
-          </NavItem>
-          <NavItem pl="12" py="2">
-            Slack
-          </NavItem>
-          <NavItem pl="12" py="2">
-            Zapier
-          </NavItem>
-        </Collapse>
-        <NavItem icon={AiFillGift}>Changelog</NavItem>
-        <NavItem icon={BsGearFill}>Settings</NavItem> */}
-      </Flex>
-    </Box>
-  );
   return (
     <Box
       as="section"
       bg={useColorModeValue('gray.50', 'gray.700')}
       minH="100vh"
     >
-      <SidebarContent display={{ base: 'none', md: 'unset' }} />
+      {/* Start:: Web Sidebar */}
+      <Box display={{ base: 'none', md: 'unset' }}>{sidebarContent}</Box>
+
+      {/* Start:: Mobile Sidebar */}
       <Drawer
         isOpen={sidebar.isOpen}
         onClose={sidebar.onClose}
         placement="right"
       >
         <DrawerOverlay />
-        <DrawerContent>
-          <SidebarContent w="full" borderRight="none" />
-        </DrawerContent>
+        <DrawerContent>{sidebarContent}</DrawerContent>
       </Drawer>
 
-      {/* start::Navbar */}
+      {/* start:: Top Navbar */}
       <Box mr={{ base: 0, md: 60 }} transition=".3s ease">
         <Flex
           as="header"
@@ -153,7 +69,6 @@ export function Sidebar({ children }: Props) {
           <div></div>
 
           <Flex align="center">
-            {/* <Icon color="gray.500" as={FaBell} cursor="pointer" /> */}
             <Menu>
               <MenuButton>
                 <Avatar
