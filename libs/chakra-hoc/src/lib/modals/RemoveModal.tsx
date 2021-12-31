@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Button,
   IconButton,
@@ -14,8 +14,8 @@ import {
   Box,
   Input,
   Text,
-} from "@chakra-ui/react";
-import { BsFillTrashFill } from "react-icons/bs";
+} from '@chakra-ui/react';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 interface Props {
   checkText?: string;
@@ -27,12 +27,18 @@ interface Props {
 }
 
 export function RemoveModal(props: Props) {
+  // Manage the state of the modal
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [text, setText] = useState("");
+
+  // set state of typed text
+  const [text, setText] = useState('');
+
+  // fix bug with spacing
+  const checkText = props.checkText?.trim();
 
   const onOpenHandler = () => {
     // Reset the text
-    setText("");
+    setText('');
 
     // Open the modal
     onOpen();
@@ -40,7 +46,7 @@ export function RemoveModal(props: Props) {
 
   const onDeleteHandler = () => {
     // Reset the text
-    setText("");
+    setText('');
 
     // Lift up state
     props.onClick();
@@ -83,19 +89,19 @@ export function RemoveModal(props: Props) {
 
               <Input
                 dir="ltr"
-                placeholder={props.checkText}
+                placeholder={checkText}
                 value={text}
                 rounded="md"
                 size="sm"
                 onChange={(e) => setText(e.target.value)}
                 onKeyPress={(e) => {
-                  if (e.key === "Enter" && props.checkText === text) {
+                  if (e.key === 'Enter' && checkText === text) {
                     onDeleteHandler();
                   }
                 }}
               />
               <Button
-                disabled={props.checkText !== text}
+                disabled={checkText !== text}
                 width="full"
                 colorScheme="red"
                 onClick={onDeleteHandler}
