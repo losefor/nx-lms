@@ -32,7 +32,7 @@ export function Sidebar({ children }: Props) {
 
   // Select the theme [ 0 , 1 ]
   const navItems = [NavItemDefault, NavItemWithPadding];
-  const NavItem = navItems[1];
+  const NavItem = navItems[0];
 
   const SidebarContent = (props: any) => (
     <Box
