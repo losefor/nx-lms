@@ -1,21 +1,19 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
 
-function CustomApp({ Component, pageProps }: AppProps) {
+// Import the styles provided by the react-pdf-viewer packages
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import Nav from "../layouts/Nav";
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to frontend!</title>
-      </Head>
-      <main className="app">
-        <ChakraProvider>
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </main>
-    </>
+    <ChakraProvider>
+      <Nav />
+      <Component {...pageProps} />
+    </ChakraProvider>
   );
 }
 
-export default CustomApp;
+export default MyApp;
