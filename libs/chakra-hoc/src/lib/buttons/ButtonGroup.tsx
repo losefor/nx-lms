@@ -28,7 +28,7 @@ export function GroubedButtons(props: GroubedButtonsProps) {
         return (
           <Button
             variant={isSelected ? 'solid' : 'outline'}
-            colorScheme={isSelected ? 'teal' : 'teal'}
+            colorScheme={isSelected ? 'teal' : 'gray'}
             width={'full'}
             onClick={() => onChangeHandler(button.value)}
           >

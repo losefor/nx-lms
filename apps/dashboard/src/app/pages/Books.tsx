@@ -1,11 +1,11 @@
-import { ButtonGroup } from "@chakra-ui/react";
-import { Table } from "antd";
-import { RemoveModal } from "../components/modals/RemoveModal";
-import { useRecoilState } from "recoil";
-import { booksState } from "../atoms/atoms";
-import { CreateBookDrawer } from "../components/drawers/CreateBookDrawer";
-import { useEffect, useState } from "react";
-import * as booksApi from "../api/books";
+import { ButtonGroup } from '@chakra-ui/react';
+import { Table } from 'antd';
+import { RemoveModal } from '@nx-lms/chakra-hoc';
+import { useRecoilState } from 'recoil';
+import { booksState } from '../atoms/atoms';
+import { CreateBookDrawer } from '../components/drawers/CreateBookDrawer';
+import { useEffect, useState } from 'react';
+import * as booksApi from '../api/books';
 
 export function Books() {
   const [booksData, setBooksData] = useRecoilState(booksState);
@@ -47,7 +47,7 @@ const ActionButtons = ({ record }: any) => {
   const [booksData, setBooksData] = useRecoilState(booksState);
 
   const onDeleteHandler = () => {
-    console.log("delete");
+    console.log('delete');
     const newBooks = booksData.books.filter((role) => role.id !== record.id);
 
     setBooksData({ books: newBooks, count: (booksData.count -= 1) });
@@ -70,18 +70,18 @@ const ActionButtons = ({ record }: any) => {
 
 const columns = [
   {
-    title: "Arabic name",
-    key: "arName",
-    dataIndex: "arName",
+    title: 'Arabic name',
+    key: 'arName',
+    dataIndex: 'arName',
   },
   {
-    title: "English name",
-    key: "enName",
-    dataIndex: "enName",
+    title: 'English name',
+    key: 'enName',
+    dataIndex: 'enName',
   },
   {
-    title: "Actions",
-    key: "actions",
+    title: 'Actions',
+    key: 'actions',
     render: (text: any, record: any) => <ActionButtons record={record} />,
   },
 ];

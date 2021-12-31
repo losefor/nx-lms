@@ -3,7 +3,7 @@ import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { CreateRoleDrawer } from '../components/drawers/CreateRoleDrawer';
 import { UpdateRoleDrawer } from '../components/drawers/UpdateRoleDrawer';
-import { RemoveModal } from '../components/modals/RemoveModal';
+import { RemoveModal } from '@nx-lms/chakra-hoc';
 import { useRecoilState } from 'recoil';
 import { rolesState } from '../atoms/atoms';
 import * as rolesApi from '../api/roles';

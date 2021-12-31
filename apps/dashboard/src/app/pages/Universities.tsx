@@ -1,9 +1,9 @@
-import { ButtonGroup, IconButton } from "@chakra-ui/react";
-import { Table } from "antd";
-import { BsBoxArrowUpRight } from "react-icons/bs";
-import { CreateUniversitiesDrawer } from "../components/drawers/CreateUniversitiesDrawer";
-import { UpdateUniversitiesDrawer } from "../components/drawers/UpdateUniversitiesDrawer";
-import { RemoveModal } from "../components/modals/RemoveModal";
+import { ButtonGroup, IconButton } from '@chakra-ui/react';
+import { Table } from 'antd';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
+import { CreateUniversitiesDrawer } from '../components/drawers/CreateUniversitiesDrawer';
+import { UpdateUniversitiesDrawer } from '../components/drawers/UpdateUniversitiesDrawer';
+import { RemoveModal } from '@nx-lms/chakra-hoc';
 
 export function Universities() {
   return (
@@ -31,7 +31,7 @@ const ActionButtons = ({ record }: any) => {
       <UpdateUniversitiesDrawer record={record} />
 
       <RemoveModal
-        onClick={() => console.log("delete university")}
+        onClick={() => console.log('delete university')}
         header="حذف الجامعة"
         body="هل انت متاكد انك تريد حذف الجامعة...؟"
         deleteInfo="قم بكتابه اسم الجامعة من اجل تاكيد عمليه الحذف"
@@ -43,42 +43,42 @@ const ActionButtons = ({ record }: any) => {
 
 const columns = [
   {
-    title: "Arabic name",
-    key: "arName",
-    dataIndex: "arName",
+    title: 'Arabic name',
+    key: 'arName',
+    dataIndex: 'arName',
   },
   {
-    title: "English name",
-    key: "enName",
-    dataIndex: "enName",
+    title: 'English name',
+    key: 'enName',
+    dataIndex: 'enName',
   },
   {
-    title: "Number of students",
-    key: "nofStudents",
-    dataIndex: "nofStudents",
+    title: 'Number of students',
+    key: 'nofStudents',
+    dataIndex: 'nofStudents',
   },
   {
-    title: "Number of teachers",
-    key: "nofTeachers",
-    dataIndex: "nofTeachers",
+    title: 'Number of teachers',
+    key: 'nofTeachers',
+    dataIndex: 'nofTeachers',
   },
   {
-    title: "Actions",
-    key: "actions",
+    title: 'Actions',
+    key: 'actions',
     render: (text: any, record: any) => <ActionButtons record={record} />,
   },
 ];
 
 const universities = [
   {
-    arName: "الجامعه التكنلوجيه",
-    enName: "University of technology",
+    arName: 'الجامعه التكنلوجيه',
+    enName: 'University of technology',
     nofStudents: 1273,
     nofTeachers: 1973,
   },
   {
-    arName: "جامعه النهرين",
-    enName: "Al-Nahrain University",
+    arName: 'جامعه النهرين',
+    enName: 'Al-Nahrain University',
     nofStudents: 1273,
     nofTeachers: 1973,
   },
