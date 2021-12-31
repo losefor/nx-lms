@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useFormikContext } from 'formik';
+import { GroubedButtons } from '@nx-lms/chakra-hoc';
 
 interface Props {
   name: string;
@@ -30,27 +31,11 @@ export function FormButtonGroup(props: Props) {
   return (
     <FormControl isInvalid={error}>
       <FormLabel>{props.label}</FormLabel>
-      <ButtonGroup isAttached variant={'outline'} width={'full'}>
-        {props.buttons.map((button) => (
-          <Button
-            bg={defaultValue === button.value ? props.primaryColor : ''}
-            color={defaultValue === button.value ? 'white' : ''}
-            borderColor={
-              defaultValue === button.value ? props.primaryColor : 'inherit'
-            }
-            width={'full'}
-            onClick={() => onChangeHandler(button.value)}
-            _hover={{
-              bg:
-                defaultValue === button.value
-                  ? props.primaryDarkColor
-                  : 'inherit',
-            }}
-          >
-            {button.name}
-          </Button>
-        ))}
-      </ButtonGroup>
+      <GroubedButtons
+        onChange={(e) => console.log(e)}
+        buttons={props.buttons}
+        defaultValue={defaultValue}
+      />
       <FormErrorMessage>{error}</FormErrorMessage>
     </FormControl>
   );

@@ -18,9 +18,9 @@ import {
 } from '@chakra-ui/react';
 import { FiLogOut, FiMenu, FiSettings } from 'react-icons/fi';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { dashRoutes } from '../../router';
-import { NavItemWithPadding } from '../components/sidebar/navItems/NavItemWithPadding';
-import { NavItemDefault } from '../components/sidebar/navItems/NavItemDefault';
+import { dashRoutes } from '../../../../../apps/dashboard/src/router';
+import { NavItemWithPadding } from '../../../../../apps/dashboard/src/app/components/sidebar/navItems/NavItemWithPadding';
+import { NavItemDefault } from '../../../../../apps/dashboard/src/app/components/sidebar/navItems/NavItemDefault';
 
 interface Props {
   children?: React.ReactNode;

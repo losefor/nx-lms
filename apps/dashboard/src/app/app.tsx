@@ -1,6 +1,6 @@
 // import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Sidebar } from './layouts/Sidebar';
+import { Sidebar } from '@nx-lms/chakra-hoc';
 import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
 
