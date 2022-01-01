@@ -1,0 +1,224 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===== Users =====
+
+model Role {
+  id String @id @default(uuid())
+
+  arName String
+  enName String
+
+  role       String? @default("")
+  university String? @default("")
+  department String? @default("")
+  student    String? @default("")
+  attachment String? @default("")
+  book       String? @default("")
+  category   String? @default("")
+  history    String? @default("")
+  favorite   String? @default("")
+
+  // The user who created this role
+  userId    String?
+  createdBy User?   @relation("RoleCreator", fields: [userId], references: [id])
+
+  // Users who have this role
+  users User[]
+  @@unique([arName, enName, userId])
+}
+
+model User {
+  id String @id @default(uuid())
+
+  // Role fileds
+  isRoot Boolean? @unique // For the Root user only
+
+  // Role of the current user
+  roleId String
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  // User naming fields
+  arName String? @map("ar_name")
+  enName String? @map("en_name")
+
+  // University and Departments naming fileds
+  arCommName String? @unique @map("ar_comm_name")
+  enCommName String? @unique @map("en_comm_name")
+  username   String? @unique
+
+  // User's get created by a university
+  universityId String?
+  university   User?   @relation("UserToUniversity", fields: [universityId], references: [id])
+
+  // User's get created by a department
+  departmentId String?
+  department   User?   @relation("UserToDepartment", fields: [departmentId], references: [id])
+
+
+  // Privacy Info
+  email       String? @unique
+  phoneNumber String? @unique @map("phone_number")
+  uotUrl      String? @unique @map("uot_url")
+
+  // Relations:: One -> Many
+  books           Book[] // Published books
+  favorites       Favorite[] // Favorites books
+  histories       History[] // History books 
+  universityUsers User[]     @relation("UserToUniversity") // Users in this university
+  departmentUsers User[]     @relation("UserToDepartment") // Users in this department
+  rentedBooks     BookRent[]
+
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+
+
+  // roles that got created by this user (university)
+  createdRoles Role[] @relation("RoleCreator")
+  @@map("users")
+}
+
+// ===== Books =====
+
+enum BookType {
+  PAPER
+  PDF
+}
+
+enum BookOfferType {
+  RENT
+  SALE
+}
+
+model Book {
+  id String @id @default(uuid())
+
+  // Public fields
+  arName      String?       @map("ar_name")
+  enName      String?       @map("en_name")
+  author      String?
+  description String
+  type        BookType
+  offerType   BookOfferType @map("offer_type")
+
+  // Relations:: Many -> One
+  userId String? @map("user_id")
+  user   User?   @relation(fields: [userId], references: [id])
+
+  categoryId String?   @map("category_id")
+  category   Category? @relation(fields: [categoryId], references: [id])
+
+  // Relations:: One -> Many
+  favorites Favorite[]
+  histories History[]
+  bookRents BookRent[]
+
+  // Statisticle fields
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @map("updated_at")
+  isDeleted DateTime? @map("is_deleted")
+  views     Int       @default(0)
+  clicks    Int       @default(0)
+
+  @@map("books")
+}
+
+model BookRent {
+  id String @id @default(uuid())
+
+  // Renting period
+  startAt DateTime @map("start_at")
+  endAt   DateTime @map("end_at")
+
+  // Rented book
+  bookId String @map("book_id")
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  // Renter
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+}
+
+// ========== Photos ==========
+model Attachment {
+  id String @id @default(uuid())
+
+  // Links
+  lqPicture String
+  mqPicture String
+  hqPicture String
+
+  // Relation fields
+  targetId    String
+  taregetType String
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+}
+
+model Favorite {
+  id String @id @default(uuid())
+
+  // Relations:: One -> Many
+  bookId String @map("book_id")
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  // Relations:: One -> Many
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("favorites")
+}
+
+model History {
+  id String @id @default(uuid())
+
+  // Relations:: One -> Many
+  bookId String @map("book_id")
+  book   Book   @relation(fields: [bookId], references: [id])
+
+  // Relations:: One -> Many
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("histories")
+}
+
+model Category {
+  id String @id @default(uuid())
+
+  //Public info
+  arName String
+  enName String
+
+  // Parent:: Many -> One
+  parentId String?
+  parent   Category? @relation("CategoryToSubcategory", fields: [parentId], references: [id])
+
+  // Childs:: One -> Many
+  children Category[] @relation("CategoryToSubcategory")
+  books    Book[]
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+}
