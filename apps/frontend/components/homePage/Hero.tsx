@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from 'next/head';
 import {
   Box,
   Heading,
@@ -9,49 +9,51 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 export function Hero() {
   return (
     <>
-      <Container maxW={"4xl"} fontFamily={"Cairo"}>
+      <Container maxW={'4xl'} fontFamily={'Cairo'}>
         <Stack
           as={Box}
-          textAlign={"center"}
+          textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
           py={{ base: 20, md: 36 }}
-          align={"center"}
-          justify={"center"}
-          height={"calc(100vh - 60px )"}
+          align={'center'}
+          justify={'center'}
+          height={'calc(100vh - 60px )'}
         >
           <Heading
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"120%"}
-            fontFamily={"Cairo"}
+            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'120%'}
+            fontFamily={'Cairo'}
           >
             مكتبه الكترونية خاصة بجامعتك <br />
-            <Text as={"span"} color={"teal.400"}>
+            <Text as={'span'} color={'teal.400'}>
               مستقبل و رصانه علميه لطلابك
             </Text>
           </Heading>
 
-          <Text color={"gray.500"}>
+          <Text color={'gray.500'}>
             احصل على افضل مكتبه الكترونيه مع مميزات لن تجدها في اي مكان اخر
           </Text>
           <Stack
-            direction={"column"}
+            direction={'column'}
             spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
+            align={'center'}
+            alignSelf={'center'}
+            position={'relative'}
           >
             <Button
-              bg={"teal.400"}
-              color={"white"}
-              _hover={{ bg: "teal.500" }}
-              rounded={"full"}
+              as="a"
+              bg={'teal.400'}
+              color={'white'}
+              _hover={{ bg: 'teal.500' }}
+              rounded={'full'}
               px={6}
+              href="#pricings"
             >
               ابدا الان
             </Button>
@@ -59,19 +61,19 @@ export function Hero() {
             <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue("gray.800", "gray.300")}
+                color={useColorModeValue('gray.800', 'gray.300')}
                 w={71}
-                position={"absolute"}
+                position={'absolute'}
                 right={-71}
-                top={"10px"}
+                top={'10px'}
               />
               <Text
-                fontSize={"lg"}
-                fontFamily={"Cairo"}
-                position={"absolute"}
-                right={"-150px"}
-                top={"-15px"}
-                transform={"rotate(14deg)"}
+                fontSize={'lg'}
+                fontFamily={'Cairo'}
+                position={'absolute'}
+                right={'-150px'}
+                top={'-15px'}
+                transform={'rotate(14deg)'}
               >
                 ابتداءً من
                 <b> 30 الف د.ع </b>
@@ -86,8 +88,8 @@ export function Hero() {
 }
 
 const Arrow = createIcon({
-  displayName: "Arrow",
-  viewBox: "0 0 72 24",
+  displayName: 'Arrow',
+  viewBox: '0 0 72 24',
   path: (
     <path
       fillRule="evenodd"

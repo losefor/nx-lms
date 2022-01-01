@@ -33,9 +33,11 @@ function PriceWrapper({ children }: { children: ReactNode }) {
 
 export function ThreeTierPricing() {
   return (
-    <Box py={12}>
+    <Box id="pricings" py={12}>
       <VStack spacing={2} textAlign="center">
-        <HeadingWithDivider>اشترك بما يلبي احتياجاتك</HeadingWithDivider>
+        <HeadingWithDivider leftDivider rightDivider>
+          اشترك بما يلبي احتياجاتك
+        </HeadingWithDivider>
         <Text fontSize="lg" color={'gray.500'}>
           ابدا بتجربه مجانيا لمده شهر كامل من دون فيزا، يمكنك الغاء الاشتراك في
           اي وقت
