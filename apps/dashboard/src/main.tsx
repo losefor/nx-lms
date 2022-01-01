@@ -5,16 +5,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ConfigProvider } from 'antd';
 import App from './app/app';
+import { theme } from '@nx-lms/chakra-hoc';
 
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 const direction = 'rtl';
 
-// 👇🏻 Here's the place we add direction to the theme
-const theme = extendTheme({
-  direction,
-  components: { Button: { baseStyle: { _focus: { boxShadow: 'none' } } } },
-});
+// // 👇🏻 Here's the place we add direction to the theme
+// const theme = extendTheme({
+//   direction,
+//   components: {},
+// });
 
 ReactDOM.render(
   <StrictMode>

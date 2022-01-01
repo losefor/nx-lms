@@ -13,7 +13,7 @@ import {
   Button,
   Divider,
 } from '@chakra-ui/react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaBook, FaCheckCircle, FaUser } from 'react-icons/fa';
 import { HeadingWithDivider } from '@nx-lms/chakra-hoc';
 
 function PriceWrapper({ children }: { children: ReactNode }) {
@@ -51,11 +51,11 @@ export function ThreeTierPricing() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Hobby
+              ابتدائي
             </Text>
             <HStack justifyContent="center">
-              <Text fontSize="5xl" fontWeight="900">
-                79
+              <Text fontSize="4xl" fontWeight="900">
+                30,000
               </Text>
               <Text fontSize="3xl" fontWeight="600">
                 د.ع
@@ -71,13 +71,27 @@ export function ThreeTierPricing() {
             borderBottomRadius={'xl'}
           >
             <List spacing={3} textAlign="start" px={12}>
-              <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                unlimited build minutes
+              <ListItem display={'flex'} alignItems={'center'}>
+                <ListIcon
+                  boxSize={'7'}
+                  padding={'1'}
+                  borderRadius={'full'}
+                  bgColor={'teal.400'}
+                  as={FaUser}
+                  color="white"
+                />
+                1000 طالب
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheckCircle} color="green.500" />
-                Lorem, ipsum dolor.
+                <ListIcon
+                  boxSize={'7'}
+                  padding={'1'}
+                  borderRadius={'full'}
+                  bgColor={'teal.400'}
+                  as={FaBook}
+                  color="white"
+                />
+                100 كتاب
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
@@ -86,7 +100,7 @@ export function ThreeTierPricing() {
             </List>
             <Box w="80%" pt={7}>
               <Button w="full" colorScheme="teal" variant="outline">
-                Start trial
+                تواصل معنا
               </Button>
             </Box>
           </VStack>
@@ -158,7 +172,7 @@ export function ThreeTierPricing() {
               </List>
               <Box w="80%" pt={7}>
                 <Button w="full" colorScheme="teal">
-                  Start trial
+                  تواصل معنا
                 </Button>
               </Box>
             </VStack>
@@ -167,11 +181,11 @@ export function ThreeTierPricing() {
         <PriceWrapper>
           <Box py={4} px={12}>
             <Text fontWeight="500" fontSize="2xl">
-              Scale
+              توسع
             </Text>
             <HStack justifyContent="center">
-              <Text fontSize="5xl" fontWeight="900">
-                349
+              <Text fontSize="4xl" fontWeight="900">
+                100,000
               </Text>
               <Text fontSize="3xl" fontWeight="600">
                 د.ع
@@ -189,7 +203,7 @@ export function ThreeTierPricing() {
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
-                unlimited build minutes
+                100,000 طالب
               </ListItem>
               <ListItem>
                 <ListIcon as={FaCheckCircle} color="green.500" />
@@ -202,7 +216,7 @@ export function ThreeTierPricing() {
             </List>
             <Box w="80%" pt={7}>
               <Button w="full" colorScheme="teal" variant="outline">
-                Start trial
+                تواصل معنا
               </Button>
             </Box>
           </VStack>
