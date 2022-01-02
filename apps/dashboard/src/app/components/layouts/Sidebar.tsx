@@ -1,24 +1,39 @@
-import { Text } from '@chakra-ui/react';
+import { Text, Spinner, Box, Flex } from '@chakra-ui/react';
 import { Sidebar, SidebarContent, NavItemDefault } from '@nx-lms/chakra-hoc';
 import { dashRoutes } from '../../../../src/router';
-import React from 'react';
+import { useRecoilState } from 'recoil';
+import { permissoins } from '../../atoms/atoms';
 
 export function DashbaordSidebar() {
   return <Sidebar sidebarContent={<Content />} />;
 }
 
 const Content = () => {
+  const [perms] = useRecoilState(permissoins);
   return (
     <SidebarContent title={<Title />}>
-      {dashRoutes.map((route, index) => {
-        const path = route.layout + route.path;
+      {perms.id ? (
+        dashRoutes.map((route, index) => {
+          const path = route.layout + route.path;
 
-        return (
-          <NavItemDefault to={path} icon={route.icon} key={index}>
-            {route.arName}
-          </NavItemDefault>
-        );
-      })}
+          return (
+            <NavItemDefault to={path} icon={route.icon} key={index}>
+              {route.arName}
+            </NavItemDefault>
+          );
+        })
+      ) : (
+        <Flex
+          w={'full'}
+          h={'calc(100vh - 76px)'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          direction={'column'}
+        >
+          <Spinner size={'xl'} color="teal" />
+          <Text pt={'2'}>جار التحميل...</Text>
+        </Flex>
+      )}
     </SidebarContent>
   );
 };

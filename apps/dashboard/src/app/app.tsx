@@ -3,8 +3,12 @@ import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
 import { DashbaordSidebar } from './components/layouts/Sidebar';
 import * as rolesApi from './api/roles';
+import { useRecoilState } from 'recoil';
+import { permissoins } from './atoms/atoms';
 
 function App() {
+  const [perms, setPerms] = useRecoilState(permissoins);
+
   useEffect(() => {
     // Make the chakra always light
     localStorage.setItem('chakra-ui-color-mode', 'light');
@@ -16,7 +20,7 @@ function App() {
   const loadMyRoles = async () => {
     const response = await rolesApi.findMyRoles();
 
-    console.log(response);
+    setPerms(response.data as any);
   };
 
   return (

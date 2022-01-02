@@ -1,39 +1,46 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const rolesState = atom({
-  key: "rolesState",
+  key: 'rolesState',
   default: {
     count: 0,
     data: [
       {
-        id: "1",
-        arName: "جامعة",
-        enName: "University",
+        id: '1',
+        arName: 'جامعة',
+        enName: 'University',
       },
       {
-        id: "2",
-        arName: "طالب",
-        enName: "Student",
+        id: '2',
+        arName: 'طالب',
+        enName: 'Student',
       },
     ],
   },
 });
 
 export const booksState = atom({
-  key: "booksState",
+  key: 'booksState',
   default: {
     count: 0,
     books: [
       {
-        id: "1",
-        arName: "جامعة",
-        enName: "University",
+        id: '1',
+        arName: 'جامعة',
+        enName: 'University',
       },
       {
-        id: "2",
-        arName: "طالب",
-        enName: "Student",
+        id: '2',
+        arName: 'طالب',
+        enName: 'Student',
       },
     ],
+  },
+});
+
+export const permissoins = atom({
+  key: 'permissions',
+  default: {
+    id: false,
   },
 });
