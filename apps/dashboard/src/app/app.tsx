@@ -1,14 +1,23 @@
-// import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Sidebar } from '@nx-lms/chakra-hoc';
 import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
 import { DashbaordSidebar } from './components/layouts/Sidebar';
+import * as rolesApi from './api/roles';
 
 function App() {
   useEffect(() => {
+    // Make the chakra always light
     localStorage.setItem('chakra-ui-color-mode', 'light');
+
+    // Load user roles
+    loadMyRoles();
   }, []);
+
+  const loadMyRoles = async () => {
+    const response = await rolesApi.findMyRoles();
+
+    console.log(response);
+  };
 
   return (
     <Routes>

@@ -39,12 +39,11 @@
         "lintFilePatterns": ["apps/backend/**/*.ts"]
       }
     },
-    "migrate:dev": {
-      "builder": "@nrwl/workspace:run-commands",
+    "migrate-dev": {
+      "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "npx prisma migrate up --experimental --schema ./src/prisma/prisma.schema",
-        "cwd": "libs/models"
+        "command": "npx prisma migrate dev --schema ./src/prisma/schema.prisma"
       }
     },
     "test": {

@@ -5,7 +5,6 @@
     "chakra-hoc": "libs/chakra-hoc",
     "dashboard": "apps/dashboard",
     "formik-chakra-react": "libs/formik-chakra-react",
-    "frontend": "apps/frontend",
-    "frontend-e2e": "apps/frontend-e2e"
+    "frontend": "apps/frontend"
   }
 }
