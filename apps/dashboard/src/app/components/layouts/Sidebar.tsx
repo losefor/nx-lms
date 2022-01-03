@@ -16,6 +16,9 @@ const Content = () => {
         dashRoutes.map((route, index) => {
           const path = route.layout + route.path;
 
+          if (!perms[route.permsission]?.includes('r')) {
+            return null;
+          }
           return (
             <NavItemDefault to={path} icon={route.icon} key={index}>
               {route.arName}

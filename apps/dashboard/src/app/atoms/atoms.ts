@@ -38,7 +38,7 @@ export const booksState = atom({
   },
 });
 
-export const permissoins = atom({
+export const permissoins = atom<any>({
   key: 'permissions',
   default: {
     id: false,

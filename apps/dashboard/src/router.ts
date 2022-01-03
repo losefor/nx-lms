@@ -17,6 +17,7 @@ export const dashRoutes = [
     icon: MdSpaceDashboard,
     component: Home,
     layout: '/admin',
+    permsission: 'none',
   },
   {
     path: '/universities',
@@ -25,6 +26,7 @@ export const dashRoutes = [
     icon: FaBuilding,
     component: Universities,
     layout: '/admin',
+    permsission: 'university',
   },
   {
     path: '/teachers',
@@ -33,6 +35,7 @@ export const dashRoutes = [
     icon: FaChalkboardTeacher,
     component: Roles,
     layout: '/admin',
+    permsission: 'none',
   },
   {
     path: '/students',
@@ -41,6 +44,7 @@ export const dashRoutes = [
     icon: FaUserAlt,
     component: Roles,
     layout: '/admin',
+    permsission: 'student',
   },
   {
     path: '/books',
@@ -49,6 +53,7 @@ export const dashRoutes = [
     icon: FaBook,
     component: Books,
     layout: '/admin',
+    permsission: 'book',
   },
   {
     path: '/roles',
@@ -57,6 +62,7 @@ export const dashRoutes = [
     icon: MdLock,
     component: Roles,
     layout: '/admin',
+    permsission: 'role',
   },
 ];
 

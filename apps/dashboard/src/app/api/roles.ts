@@ -4,10 +4,6 @@ export const findMany = async (query: any) => {
   return api.get('/roles', query);
 };
 
-export const findMyRoles = async () => {
-  return api.get('/roles/me');
-};
-
 export const create = async (data: any) => {
   return api.post(`/roles`, data);
 };
