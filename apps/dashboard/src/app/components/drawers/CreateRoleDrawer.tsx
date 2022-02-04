@@ -11,6 +11,7 @@ import {
   DrawerBody,
   DrawerFooter,
   useToast,
+  Heading,
 } from '@chakra-ui/react';
 import { FaPlus } from 'react-icons/fa';
 import {
@@ -21,8 +22,12 @@ import {
 } from '@nx-lms/formik-chakra-react';
 import * as yup from 'yup';
 import * as rolesApi from '../../api/roles';
+import { permissions } from '../../atoms/atoms';
+import { useRecoilState } from 'recoil';
 
 export function CreateRoleDrawer() {
+  const [perms] = useRecoilState(permissions);
+
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
@@ -84,6 +89,10 @@ export function CreateRoleDrawer() {
       window.location.reload();
     }, 700);
   };
+
+  if (!perms['role'].includes('c')) {
+    return <Heading>Roles</Heading>;
+  }
 
   return (
     <>

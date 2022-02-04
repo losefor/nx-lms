@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@chakra-ui/react';
+import { ButtonProps } from '@chakra-ui/react';
 import { useFormikContext } from 'formik';
 import { RippledButton } from '@nx-lms/chakra-hoc';
 interface Props extends ButtonProps {
@@ -13,7 +13,6 @@ export function FormButton({ children, isLoading, color, ...rest }: Props) {
   return (
     <RippledButton
       color={color}
-      // htmlType="submit"
       onClick={() => handleSubmit()}
       isLoading={isLoading}
       type="submit"

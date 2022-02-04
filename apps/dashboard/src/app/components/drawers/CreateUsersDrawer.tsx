@@ -17,6 +17,7 @@ import {
   FormButton,
   FormInput,
   FormPhoneNumberInput,
+  FormSelect,
   FormUpload,
 } from '@nx-lms/formik-chakra-react';
 import * as yup from 'yup';
@@ -31,6 +32,7 @@ export function CreateUniversitiesDrawer() {
     username: '',
     phoneNumber: '',
     image: '',
+    roleId: '',
   };
 
   const validationSchema = yup.object({
@@ -40,6 +42,7 @@ export function CreateUniversitiesDrawer() {
     phoneNumber: yup.string().required(),
     image: yup.string().required(),
     email: yup.string().email().required(),
+    roleId: yup.string().uuid().required(),
   });
 
   return (
@@ -56,7 +59,7 @@ export function CreateUniversitiesDrawer() {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton left="2" right="auto" />
-          <DrawerHeader borderBottomWidth="1px">انشاء جامعه جديدة</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">انشاء مستخدم جديد</DrawerHeader>
 
           <Form
             initialValues={initialValues}
@@ -67,9 +70,13 @@ export function CreateUniversitiesDrawer() {
               <Stack spacing="4" align="center">
                 <FormUpload name="image" />
                 <FormPhoneNumberInput name="phoneNumber" label="رقم الهاتف" />
-                <FormInput name="arName" label="اسم الجامعة العربي" />
-                <FormInput name="enName" label="اسم الجامعة الانكليزي" />
-                <FormInput name="username" label="رمز الجامعة التعريفي" />
+                <FormInput name="arName" label="اسم المستخدم العربي" />
+                <FormInput name="enName" label="اسم المستخدم الانكليزي" />
+                <FormInput name="username" label="رمز المستخدم التعريفي" />
+                <FormSelect name="roleId" label="نوع المستخدم">
+                  <option value="123">Student</option>
+                  <option value="321">Department</option>
+                </FormSelect>
               </Stack>
             </DrawerBody>
 

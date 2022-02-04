@@ -1,7 +1,7 @@
 import { ButtonGroup, IconButton, useToast } from '@chakra-ui/react';
 import { Table } from 'antd';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
-import { CreateUniversitiesDrawer } from '../components/drawers/CreateUniversitiesDrawer';
+import { CreateUniversitiesDrawer } from '../components/drawers/CreateUsersDrawer';
 import { UpdateUniversitiesDrawer } from '../components/drawers/UpdateUniversitiesDrawer';
 import { RemoveModal } from '@nx-lms/chakra-hoc';
 import { useEffect, useState } from 'react';

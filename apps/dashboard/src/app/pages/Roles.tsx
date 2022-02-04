@@ -44,8 +44,9 @@ export function Roles() {
   return (
     <Table
       title={() => (
+      
         <Flex justifyContent={'flex-end'}>
-          <CreateRoleDrawer />
+           <CreateRoleDrawer />
         </Flex>
       )}
       columns={columns}

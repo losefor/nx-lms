@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { ConfigProvider } from 'antd';
 import App from './app/app';
-import { theme } from '@nx-lms/chakra-hoc';
+import { ChakraRtlProvider, theme } from '@nx-lms/chakra-hoc';
 
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
@@ -23,7 +23,9 @@ ReactDOM.render(
       <Router>
         <ConfigProvider direction="rtl">
           <ChakraProvider theme={theme}>
-            <App />
+            <ChakraRtlProvider>
+              <App />
+            </ChakraRtlProvider>
           </ChakraProvider>
         </ConfigProvider>
       </Router>

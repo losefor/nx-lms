@@ -1,6 +1,6 @@
-import React from "react";
-import { Select, FormControl, FormLabel } from "@chakra-ui/react";
-import { useFormikContext } from "formik";
+import React from 'react';
+import { Select, FormControl, FormLabel } from '@chakra-ui/react';
+import { useFormikContext } from 'formik';
 
 interface Props {
   name: string;
@@ -23,7 +23,7 @@ export const FormSelect = ({ name, label, width, children }: Props) => {
       <FormLabel>{label}</FormLabel>
       <Select
         value={(values as any)[name]}
-        onChange={(value) => setFieldValue(name, value)}
+        onChange={(e) => setFieldValue(name, e.target.value)}
       >
         {children}
       </Select>
