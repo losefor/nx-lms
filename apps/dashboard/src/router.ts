@@ -1,4 +1,4 @@
-import { Home, Roles, Universities } from './app/pages';
+import { Home, Roles, Users } from './app/pages';
 import {
   FaBook,
   FaBuilding,
@@ -17,34 +17,34 @@ export const dashRoutes = [
     icon: MdSpaceDashboard,
     component: Home,
     layout: '/admin',
-    permsission: 'none',
+    permissions: 'none',
   },
+  // {
+  //   path: '/universities',
+  //   enName: 'Universities',
+  //   arName: 'الجامعات',
+  //   icon: FaBuilding,
+  //   component: Universities,
+  //   layout: '/admin',
+  //   permissions: 'university',
+  // },
+  // {
+  //   path: '/teachers',
+  //   enName: 'Teachers',
+  //   arName: 'المدرسين',
+  //   icon: FaChalkboardTeacher,
+  //   component: Roles,
+  //   layout: '/admin',
+  //   permissions: 'none',
+  // },
   {
-    path: '/universities',
-    enName: 'Universities',
-    arName: 'الجامعات',
-    icon: FaBuilding,
-    component: Universities,
-    layout: '/admin',
-    permsission: 'university',
-  },
-  {
-    path: '/teachers',
-    enName: 'Teachers',
-    arName: 'المدرسين',
-    icon: FaChalkboardTeacher,
-    component: Roles,
-    layout: '/admin',
-    permsission: 'none',
-  },
-  {
-    path: '/students',
-    enName: 'Students',
-    arName: 'الطلاب',
+    path: '/users',
+    enName: 'User',
+    arName: 'المستخدمين',
     icon: FaUserAlt,
-    component: Roles,
+    component: Users,
     layout: '/admin',
-    permsission: 'student',
+    permissions: 'user',
   },
   {
     path: '/books',
@@ -53,7 +53,7 @@ export const dashRoutes = [
     icon: FaBook,
     component: Books,
     layout: '/admin',
-    permsission: 'book',
+    permissions: 'book',
   },
   {
     path: '/roles',
@@ -62,7 +62,7 @@ export const dashRoutes = [
     icon: MdLock,
     component: Roles,
     layout: '/admin',
-    permsission: 'role',
+    permissions: 'role',
   },
 ];
 

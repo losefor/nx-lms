@@ -26,7 +26,7 @@ export function Books() {
 
   const paginationHandler = (page: number, pageSize: number) => {
     console.log(page, pageSize);
-    setQuery({ skip: page * pageSize, take: pageSize as number });
+    setQuery({ skip: (page - 1) * pageSize, take: pageSize as number });
   };
 
   return (

@@ -1,4 +1,11 @@
-import { ButtonGroup, toast, useToast } from '@chakra-ui/react';
+import {
+  Box,
+  ButtonGroup,
+  Divider,
+  Flex,
+  toast,
+  useToast,
+} from '@chakra-ui/react';
 import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { CreateRoleDrawer } from '../components/drawers/CreateRoleDrawer';
@@ -36,7 +43,11 @@ export function Roles() {
 
   return (
     <Table
-      title={() => <CreateRoleDrawer />}
+      title={() => (
+        <Flex justifyContent={'flex-end'}>
+          <CreateRoleDrawer />
+        </Flex>
+      )}
       columns={columns}
       dataSource={rolesData.data}
       rowKey="id"

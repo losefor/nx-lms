@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   useDisclosure,
@@ -10,27 +10,27 @@ import {
   DrawerCloseButton,
   DrawerBody,
   DrawerFooter,
-} from "@chakra-ui/react";
-import { FaPlus } from "react-icons/fa";
+} from '@chakra-ui/react';
+import { FaPlus } from 'react-icons/fa';
 import {
   Form,
   FormButton,
   FormInput,
   FormPhoneNumberInput,
   FormUpload,
-} from "@nx-lms/formik-chakra-react";
-import * as yup from "yup";
+} from '@nx-lms/formik-chakra-react';
+import * as yup from 'yup';
 
 export function CreateUniversitiesDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = React.useRef();
 
   const initialValues = {
-    arName: "",
-    enName: "",
-    username: "",
-    phoneNumber: "",
-    image: "",
+    arName: '',
+    enName: '',
+    username: '',
+    phoneNumber: '',
+    image: '',
   };
 
   const validationSchema = yup.object({
@@ -39,12 +39,13 @@ export function CreateUniversitiesDrawer() {
     username: yup.string().required(),
     phoneNumber: yup.string().required(),
     image: yup.string().required(),
+    email: yup.string().email().required(),
   });
 
   return (
     <>
       <Button leftIcon={<FaPlus />} colorScheme="teal" onClick={onOpen}>
-        اضافه جامعة جديدة
+        اضافه مستخدم جديد
       </Button>
       <Drawer
         isOpen={isOpen}

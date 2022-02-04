@@ -3,11 +3,11 @@ import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
 import { DashbaordSidebar } from './components/layouts/Sidebar';
 import { useRecoilState } from 'recoil';
-import { permissoins } from './atoms/atoms';
+import { permissions } from './atoms/atoms';
 import * as usersApi from './api/users';
 
 function App() {
-  const [perms, setPerms] = useRecoilState(permissoins);
+  const [perms, setPerms] = useRecoilState(permissions);
 
   useEffect(() => {
     // Make the chakra always light

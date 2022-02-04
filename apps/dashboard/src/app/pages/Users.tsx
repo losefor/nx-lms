@@ -1,47 +1,74 @@
-import { ButtonGroup, IconButton, SimpleGrid } from '@chakra-ui/react';
-import { AiFillEdit } from 'react-icons/ai';
-import { BsBoxArrowUpRight, BsFillTrashFill } from 'react-icons/bs';
+import { ButtonGroup, IconButton, useToast } from '@chakra-ui/react';
 import { Table } from 'antd';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
+import { CreateUniversitiesDrawer } from '../components/drawers/CreateUniversitiesDrawer';
+import { UpdateUniversitiesDrawer } from '../components/drawers/UpdateUniversitiesDrawer';
+import { RemoveModal } from '@nx-lms/chakra-hoc';
+import { useEffect, useState } from 'react';
+import * as usersApi from '../api/users';
 
-import { StudentCard } from '../components/cards/StudentCard';
+export function Users() {
+  const toast = useToast();
 
-export default function Users() {
+  // const [rolesData, setRolesData] = useRecoilState(rolesState);
+  const [users, setUsers] = useState([]);
+  const [query, setQuery] = useState({ skip: 0, take: 10 });
+
+  useEffect(() => {
+    getAllRoles();
+  }, []);
+
+  const getAllRoles = async () => {
+    const response = await usersApi.findMany(query);
+    const items = response.data as any;
+
+    // Show error message when the request fail
+    if (!response.ok) {
+      return toast({
+        status: 'error',
+        title: 'Error happened',
+        description: items.message,
+      });
+    }
+
+    console.log(items);
+
+    return setUsers(items.data);
+    // return [];
+  };
+
+  const columns = [
+    // {
+    //   title: 'Arabic name',
+    //   key: 'arCommName',
+    //   dataIndex: 'arCommName',
+    // },
+    {
+      title: 'English name',
+      key: 'enName',
+      dataIndex: 'enName',
+    },
+    {
+      title: 'Actions',
+      key: 'actions',
+      render: (text: any, record: any) => <ActionButtons record={record} />,
+    },
+  ];
+
   return (
     <div>
-      <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing="5">
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-        <StudentCard />
-      </SimpleGrid>
-      <Table columns={columns} dataSource={data} />
+      <Table
+        title={() => <CreateUniversitiesDrawer />}
+        columns={columns}
+        dataSource={users}
+        rowKey="id"
+      />
     </div>
   );
 }
 
-const columns = [
-  {
-    title: 'الاسم الثلاثي',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: 'العمر',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Actions',
-    key: 'actions',
-    render: () => <ActionButtons />,
-  },
-];
-
-const ActionButtons = () => {
+const ActionButtons = ({ record }: any) => {
+  console.log(record.enName);
   return (
     <ButtonGroup variant="solid" size="sm" spacing={2}>
       <IconButton
@@ -49,25 +76,16 @@ const ActionButtons = () => {
         colorScheme="blue"
         icon={<BsBoxArrowUpRight />}
       />
-      <IconButton
-        aria-label="fill edit"
-        colorScheme="green"
-        icon={<AiFillEdit />}
-      />
-      <IconButton
-        aria-label="trash"
-        colorScheme="red"
-        variant="outline"
-        icon={<BsFillTrashFill />}
+
+      <UpdateUniversitiesDrawer record={record} />
+
+      <RemoveModal
+        onClick={() => console.log('delete university')}
+        header="حذف الجامعة"
+        body="هل انت متاكد انك تريد حذف الجامعة...؟"
+        deleteInfo="قم بكتابه اسم الجامعة من اجل تاكيد عمليه الحذف"
+        checkText={record.enName}
       />
     </ButtonGroup>
   );
 };
-
-const data = [
-  {
-    id: '324234-23423432-536-234236',
-    name: 'محمد باقر',
-    age: 20,
-  },
-];

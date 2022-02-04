@@ -59,12 +59,13 @@ export function CreateRoleDrawer() {
     // Update the data
     const response = await rolesApi.create(reshapedData);
 
-    if (!response.ok) {
+    if (!response.ok && response.status === 403) {
       // Show error message
-      toast({
+      return toast({
         status: 'error',
-        title: 'Error',
-        description: 'Some error happened please try again',
+        title: 'لم تتم الاضافة',
+        description:
+          'ليس لديك الصلاحيات اللازم لانشاء صلاحيه جديدة يرجى التواصل مع الاداره من اجل الحصول عل الصلاحيات اللازمة',
       });
     }
 
@@ -79,7 +80,7 @@ export function CreateRoleDrawer() {
     onClose();
 
     // update local data
-    setTimeout(() => {
+    return setTimeout(() => {
       window.location.reload();
     }, 700);
   };

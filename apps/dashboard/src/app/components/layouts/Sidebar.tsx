@@ -2,21 +2,22 @@ import { Text, Spinner, Box, Flex } from '@chakra-ui/react';
 import { Sidebar, SidebarContent, NavItemDefault } from '@nx-lms/chakra-hoc';
 import { dashRoutes } from '../../../../src/router';
 import { useRecoilState } from 'recoil';
-import { permissoins } from '../../atoms/atoms';
+import { permissions } from '../../atoms/atoms';
 
 export function DashbaordSidebar() {
   return <Sidebar sidebarContent={<Content />} />;
 }
 
 const Content = () => {
-  const [perms] = useRecoilState(permissoins);
+  const [perms] = useRecoilState(permissions);
+
   return (
     <SidebarContent title={<Title />}>
       {perms.id ? (
         dashRoutes.map((route, index) => {
           const path = route.layout + route.path;
 
-          if (!perms[route.permsission]?.includes('r')) {
+          if (!perms[route.permissions]?.includes('r')) {
             return null;
           }
           return (
