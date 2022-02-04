@@ -26,7 +26,7 @@ export function RippledButton(props: ButtonProps) {
         transition: 'background 0s',
       }}
     >
-      Click Me
+      {props.children}
     </Button>
   );
 }
