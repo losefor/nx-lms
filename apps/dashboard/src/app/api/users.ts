@@ -7,3 +7,7 @@ export const findMyPermissioins = async () => {
 export const findMany = async (query: any) => {
   return api.get('/users', query);
 };
+
+export const create = async (data: unknown) => {
+  return api.post('/users', data);
+};

@@ -3,24 +3,47 @@ import { authRoutes, dashRoutes } from '../router';
 import { useEffect } from 'react';
 import { DashbaordSidebar } from './components/layouts/Sidebar';
 import { useRecoilState } from 'recoil';
-import { permissions } from './atoms/atoms';
+import { permissions, rolesState } from './atoms/atoms';
 import * as usersApi from './api/users';
+import * as rolesApi from './api/roles';
+import { useToast } from '@chakra-ui/react';
 
 function App() {
+  const toast = useToast();
   const [perms, setPerms] = useRecoilState(permissions);
+  const [rolesData, setRolesData] = useRecoilState(rolesState);
 
   useEffect(() => {
     // Make the chakra always light
     localStorage.setItem('chakra-ui-color-mode', 'light');
 
-    // Load user roles
-    loadMyRoles();
+    // Load user permission
+    loadPermissions();
+
+    // Load roles
+    getAllRoles();
   }, []);
 
-  const loadMyRoles = async () => {
+  const loadPermissions = async () => {
     const response = await usersApi.findMyPermissioins();
     console.log(response.data);
     setPerms(response.data as any);
+  };
+
+  const getAllRoles = async () => {
+    const response = await rolesApi.findMany({ skip: 0, take: 1000 });
+    const items = response.data as any;
+
+    // Show error message when the request fail
+    if (!response.ok) {
+      return toast({
+        status: 'error',
+        title: 'Error happened',
+        description: items.message,
+      });
+    }
+
+    return setRolesData(items);
   };
 
   return (

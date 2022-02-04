@@ -18,35 +18,14 @@ import * as rolesApi from '../api/roles';
 export function Roles() {
   const toast = useToast();
 
-  const [rolesData, setRolesData] = useRecoilState(rolesState);
+  const [rolesData] = useRecoilState(rolesState);
   const [query] = useState({ skip: 0, take: 10 });
-
-  useEffect(() => {
-    getAllRoles();
-  }, []);
-
-  const getAllRoles = async () => {
-    const response = await rolesApi.findMany(query);
-    const items = response.data as any;
-
-    // Show error message when the request fail
-    if (!response.ok) {
-      return toast({
-        status: 'error',
-        title: 'Error happened',
-        description: items.message,
-      });
-    }
-
-    return setRolesData(items);
-  };
 
   return (
     <Table
       title={() => (
-      
         <Flex justifyContent={'flex-end'}>
-           <CreateRoleDrawer />
+          <CreateRoleDrawer />
         </Flex>
       )}
       columns={columns}

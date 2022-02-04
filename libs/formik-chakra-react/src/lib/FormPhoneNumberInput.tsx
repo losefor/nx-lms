@@ -6,10 +6,11 @@ import {
   InputGroup,
   FormErrorMessage,
   InputRightAddon,
+  FormControlProps,
 } from '@chakra-ui/react';
 import { useFormikContext } from 'formik';
 
-interface Props {
+interface Props extends FormControlProps {
   name: string;
   isLoading?: boolean;
   placeholder?: string;
@@ -24,15 +25,15 @@ export const FormPhoneNumberInput = ({
   name,
   placeholder,
   label,
-  width,
   prefix,
   suffix,
+  isRequired,
 }: Props) => {
   const { values, setFieldValue, errors, touched } = useFormikContext();
   const error = (touched as any)[name] && (errors as any)[name];
 
   return (
-    <FormControl isInvalid={error}>
+    <FormControl isRequired={isRequired} isInvalid={error}>
       <FormLabel>{label}</FormLabel>
       <InputGroup dir="ltr">
         <InputRightAddon children="+964" />

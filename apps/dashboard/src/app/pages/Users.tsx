@@ -1,4 +1,4 @@
-import { ButtonGroup, IconButton, useToast } from '@chakra-ui/react';
+import { ButtonGroup, IconButton, Tooltip, useToast } from '@chakra-ui/react';
 import { Table } from 'antd';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 import { CreateUniversitiesDrawer } from '../components/drawers/CreateUsersDrawer';
@@ -15,10 +15,10 @@ export function Users() {
   const [query, setQuery] = useState({ skip: 0, take: 10 });
 
   useEffect(() => {
-    getAllRoles();
+    finMayUsers();
   }, []);
 
-  const getAllRoles = async () => {
+  const finMayUsers = async () => {
     const response = await usersApi.findMany(query);
     const items = response.data as any;
 
@@ -31,29 +31,9 @@ export function Users() {
       });
     }
 
-    console.log(items);
-
     return setUsers(items.data);
     // return [];
   };
-
-  const columns = [
-    // {
-    //   title: 'Arabic name',
-    //   key: 'arCommName',
-    //   dataIndex: 'arCommName',
-    // },
-    {
-      title: 'English name',
-      key: 'enName',
-      dataIndex: 'enName',
-    },
-    {
-      title: 'Actions',
-      key: 'actions',
-      render: (text: any, record: any) => <ActionButtons record={record} />,
-    },
-  ];
 
   return (
     <div>
@@ -71,11 +51,13 @@ const ActionButtons = ({ record }: any) => {
   console.log(record.enName);
   return (
     <ButtonGroup variant="solid" size="sm" spacing={2}>
-      <IconButton
-        aria-label="arrow up right"
-        colorScheme="blue"
-        icon={<BsBoxArrowUpRight />}
-      />
+      <Tooltip label="مشاهده في صفحة اخرى">
+        <IconButton
+          aria-label="arrow up right"
+          colorScheme="blue"
+          icon={<BsBoxArrowUpRight />}
+        />
+      </Tooltip>
 
       <UpdateUniversitiesDrawer record={record} />
 
@@ -89,3 +71,21 @@ const ActionButtons = ({ record }: any) => {
     </ButtonGroup>
   );
 };
+
+const columns = [
+  {
+    title: 'اسم المستخدم',
+    key: 'arName',
+    dataIndex: 'arName',
+  },
+  {
+    title: 'نوع المستخدم',
+    key: 'role.arName',
+    dataIndex: ['role', 'arName'],
+  },
+  {
+    title: 'الاجراءات',
+    key: 'actions',
+    render: (text: any, record: any) => <ActionButtons record={record} />,
+  },
+];

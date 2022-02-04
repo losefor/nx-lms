@@ -11,6 +11,7 @@ import {
   DrawerBody,
   DrawerFooter,
   IconButton,
+  Tooltip,
 } from '@chakra-ui/react';
 import {
   Form,
@@ -36,12 +37,14 @@ export function UpdateUniversitiesDrawer({ record }: any) {
 
   return (
     <>
-      <IconButton
-        aria-label="fill edit"
-        colorScheme="green"
-        icon={<AiFillEdit />}
-        onClick={onOpen}
-      />
+      <Tooltip label="تعديل">
+        <IconButton
+          aria-label="fill edit"
+          colorScheme="green"
+          icon={<AiFillEdit />}
+          onClick={onOpen}
+        />
+      </Tooltip>
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -60,7 +63,7 @@ export function UpdateUniversitiesDrawer({ record }: any) {
           >
             <DrawerBody>
               <Stack spacing="4" align="center">
-                <FormUpload name="image" />
+                <FormUpload name="image" label="الصوره الشخصيه" />
                 <FormPhoneNumberInput name="phoneNumber" label="رقم الهاتف" />
                 <FormInput name="arName" label="اسم الجامه العربي" />
                 <FormInput name="enName" label="اسم الجامه الانكليزي" />

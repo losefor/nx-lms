@@ -14,6 +14,7 @@ import {
   Box,
   Input,
   Text,
+  Tooltip,
 } from '@chakra-ui/react';
 import { BsFillTrashFill } from 'react-icons/bs';
 
@@ -58,13 +59,15 @@ export function RemoveModal(props: Props) {
   return (
     <>
       {/* Action button that will open the modal */}
-      <IconButton
-        onClick={onOpenHandler}
-        aria-label="trash"
-        colorScheme="red"
-        variant="outline"
-        icon={<BsFillTrashFill />}
-      />
+      <Tooltip label="حذف">
+        <IconButton
+          onClick={onOpenHandler}
+          aria-label="trash"
+          colorScheme="red"
+          variant="outline"
+          icon={<BsFillTrashFill />}
+        />
+      </Tooltip>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent maxW="300px">
