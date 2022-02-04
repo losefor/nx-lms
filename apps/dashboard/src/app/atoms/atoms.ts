@@ -1,7 +1,20 @@
 import { atom } from 'recoil';
 
-export const rolesState = atom({
+interface Response {
+  count?: number;
+  data?: any;
+}
+
+export const rolesState = atom<Response>({
   key: 'rolesState',
+  default: {
+    count: 0,
+    data: [],
+  },
+});
+
+export const usersState = atom({
+  key: 'usersState',
   default: {
     count: 0,
     data: [

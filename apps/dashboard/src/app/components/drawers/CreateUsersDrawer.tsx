@@ -61,7 +61,7 @@ export function CreateUniversitiesDrawer() {
         status: 'error',
         title: 'لم تتم الاضافة',
         description:
-          'ليس لديك الصلاحيات اللازم لانشاء صلاحيه جديدة يرجى التواصل مع الاداره من اجل الحصول عل الصلاحيات اللازمة',
+          'ليس لديك الصلاحيات اللازم لانشاء مستخدم جديد يرجى التواصل مع الاداره من اجل الحصول عل الصلاحيات اللازمة',
       });
     }
 
@@ -127,7 +127,7 @@ export function CreateUniversitiesDrawer() {
                 />
                 <FormInput isRequired name="email" label="ايميل المستخدم" />
                 <FormSelect isRequired name="roleId" label="نوع المستخدم">
-                  {roles.data.map((item) => (
+                  {roles.data.map((item: any) => (
                     <option value={item.id}>{item.arName}</option>
                   ))}
                 </FormSelect>

@@ -11,3 +11,7 @@ export const findMany = async (query: any) => {
 export const create = async (data: unknown) => {
   return api.post('/users', data);
 };
+
+export const remove = async (id: string) => {
+  return api.delete(`/users/${id}`);
+};

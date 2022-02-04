@@ -6,12 +6,18 @@ import { UpdateUniversitiesDrawer } from '../components/drawers/UpdateUniversiti
 import { RemoveModal } from '@nx-lms/chakra-hoc';
 import { useEffect, useState } from 'react';
 import * as usersApi from '../api/users';
+import {
+  useRecoilState,
+  useRecoilStateLoadable,
+  useResetRecoilState,
+} from 'recoil';
+import { usersState } from '../atoms/atoms';
 
 export function Users() {
   const toast = useToast();
 
   // const [rolesData, setRolesData] = useRecoilState(rolesState);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useRecoilState(usersState);
   const [query, setQuery] = useState({ skip: 0, take: 10 });
 
   useEffect(() => {
@@ -31,7 +37,7 @@ export function Users() {
       });
     }
 
-    return setUsers(items.data);
+    return setUsers(items);
     // return [];
   };
 
@@ -40,7 +46,7 @@ export function Users() {
       <Table
         title={() => <CreateUniversitiesDrawer />}
         columns={columns}
-        dataSource={users}
+        dataSource={users.data}
         rowKey="id"
       />
     </div>
@@ -49,6 +55,34 @@ export function Users() {
 
 const ActionButtons = ({ record }: any) => {
   console.log(record.enName);
+  const toast = useToast();
+  const [users, setUsers] = useRecoilState(usersState);
+
+  const onDeleteHandler = async () => {
+    // optimistic delete
+    const prevUsersData = users;
+    const newRoles = users.data.filter((role: any) => role.id !== record.id);
+
+    const newRolesData = { data: newRoles, count: 0 };
+    setUsers(newRolesData);
+
+    const response = await usersApi.remove(record.id);
+    if (!response.ok) {
+      toast({
+        status: 'error',
+        title: 'Error',
+        description: 'Some error happened please try again',
+      });
+
+      return setUsers(prevUsersData);
+    }
+
+    toast({
+      status: 'success',
+      title: 'Success',
+      description: 'The role has been deleted successfully',
+    });
+  };
   return (
     <ButtonGroup variant="solid" size="sm" spacing={2}>
       <Tooltip label="مشاهده في صفحة اخرى">
@@ -62,7 +96,7 @@ const ActionButtons = ({ record }: any) => {
       <UpdateUniversitiesDrawer record={record} />
 
       <RemoveModal
-        onClick={() => console.log('delete university')}
+        onClick={onDeleteHandler}
         header="حذف الجامعة"
         body="هل انت متاكد انك تريد حذف الجامعة...؟"
         deleteInfo="قم بكتابه اسم الجامعة من اجل تاكيد عمليه الحذف"
