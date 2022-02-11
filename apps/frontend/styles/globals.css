@@ -1,12 +1,12 @@
 * {
-  font-family: "Cairo";
+  font-family: 'Cairo';
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Cairo";
+  font-family: 'Cairo';
 }
 
 a {
@@ -23,7 +23,8 @@ a {
 .rdrStartEdge,
 .rdrDayStartPreview,
 .rdrDayStartOfWeek .rdrDayInPreview,
-.rdrDayStartOfWeek .rdrInRange {
+.rdrDayStartOfWeek .rdrInRange,
+.rdrDayStartOfWeek .rdrEndEdge {
   border-top-left-radius: 5px !important;
   border-bottom-left-radius: 5px !important;
 }
@@ -31,7 +32,8 @@ a {
 .rdrEndEdge,
 .rdrDayEndPreview,
 .rdrDayEndOfWeek .rdrDayInPreview,
-.rdrDayEndOfWeek .rdrInRange {
+.rdrDayEndOfWeek .rdrInRange,
+.rdrDayEndOfWeek .rdrStartEdge {
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
 }

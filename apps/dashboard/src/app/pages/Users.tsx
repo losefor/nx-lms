@@ -6,12 +6,9 @@ import { UpdateUniversitiesDrawer } from '../components/drawers/UpdateUniversiti
 import { RemoveModal } from '@nx-lms/chakra-hoc';
 import { useEffect, useState } from 'react';
 import * as usersApi from '../api/users';
-import {
-  useRecoilState,
-  useRecoilStateLoadable,
-  useResetRecoilState,
-} from 'recoil';
+import { useRecoilState } from 'recoil';
 import { usersState } from '../atoms/atoms';
+import { UpdateUserDrawer } from '../components/drawers/UpdateUsersDrawer';
 
 export function Users() {
   const toast = useToast();
@@ -83,6 +80,7 @@ const ActionButtons = ({ record }: any) => {
       description: 'The role has been deleted successfully',
     });
   };
+
   return (
     <ButtonGroup variant="solid" size="sm" spacing={2}>
       <Tooltip label="مشاهده في صفحة اخرى">
@@ -93,7 +91,7 @@ const ActionButtons = ({ record }: any) => {
         />
       </Tooltip>
 
-      <UpdateUniversitiesDrawer record={record} />
+      <UpdateUserDrawer record={record} />
 
       <RemoveModal
         onClick={onDeleteHandler}

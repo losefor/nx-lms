@@ -11,6 +11,10 @@ import { ChakraRtlProvider, theme } from '@nx-lms/chakra-hoc';
 // Import the styles provided by the react-pdf-viewer packages
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 import Nav from '../layouts/Nav';
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -131,6 +131,60 @@ const books = [
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
   },
+  {
+    id: '1',
+    enName: 'Design patterns with node js',
+    arName: 'دراسه الانماط مع ال node js',
+    type: 'PAPER',
+    offerType: 'RENT',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
+  {
+    id: '1',
+    enName: 'Node js streams',
+    arName: 'Node js streams',
+    type: 'PAPER',
+    offerType: 'RENT',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
+  {
+    id: '1',
+    enName: 'Js basics',
+    arName: 'Js basics',
+    type: 'PDF',
+    offerType: 'RENT',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
+  {
+    id: '1',
+    enName: 'Typescript the advanced concepts',
+    arName: 'Typescript the advanced concepts',
+    type: 'PAPER',
+    offerType: 'SALE',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
+  {
+    id: '1',
+    enName: 'SQL for zero to hero',
+    arName: 'SQL for zero to hero',
+    type: 'PDF',
+    offerType: 'RENT',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
+  {
+    id: '1',
+    enName: 'Design patterns with node js',
+    arName: 'دراسه الانماط مع ال node js',
+    type: 'PAPER',
+    offerType: 'RENT',
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus magni consequatur adipisci culpa similique, voluptate, quasi dolorem suscipit, quam optio sit ipsum? Perspiciatis libero voluptatibus iure ullam consequuntur dolorem dolores',
+  },
 ];
 
 const categories: Category[] = [

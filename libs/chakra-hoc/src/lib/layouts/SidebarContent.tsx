@@ -34,15 +34,6 @@ export function SidebarContent({ title, children, ...rest }: any) {
         aria-label="Main Navigation"
       >
         {children}
-        {/* {dashRoutes.map((route, index) => {
-          const path = route.layout + route.path;
-
-          return (
-            <NavItem to={path} icon={route.icon} key={index}>
-              {route.arName}
-            </NavItem>
-          );
-        })} */}
       </Flex>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Flex, Icon, Box } from '@chakra-ui/react';
+import { Flex, Icon } from '@chakra-ui/react';
 import { useMatch, useResolvedPath, useNavigate } from 'react-router-dom';
 import { colorParser } from '../utils/colorParser';
 

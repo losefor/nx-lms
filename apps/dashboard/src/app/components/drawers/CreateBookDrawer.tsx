@@ -21,6 +21,7 @@ import {
 } from '@nx-lms/formik-chakra-react';
 import * as yup from 'yup';
 import { colors } from '../../config/colors';
+import * as booksApi from '../../api/books';
 
 export function CreateBookDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,6 +45,12 @@ export function CreateBookDrawer() {
     type: yup.string().required(),
   });
 
+  const onSubmitHandler = async (val: any) => {
+    const response = await booksApi.create(val);
+
+    console.log(response);
+  };
+
   return (
     <>
       <Button leftIcon={<FaPlus />} colorScheme="teal" onClick={onOpen}>
@@ -63,7 +70,7 @@ export function CreateBookDrawer() {
           <Form
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(e) => console.log(e)}
+            onSubmit={onSubmitHandler}
           >
             <DrawerBody>
               <Stack spacing="4">

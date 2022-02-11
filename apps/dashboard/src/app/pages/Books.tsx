@@ -33,7 +33,7 @@ export function Books() {
     <Table
       title={() => <CreateBookDrawer />}
       columns={columns}
-      dataSource={booksData.books}
+      dataSource={booksData.data}
       pagination={{
         total: booksData.count,
         pageSize: query.take,
@@ -48,9 +48,11 @@ const ActionButtons = ({ record }: any) => {
 
   const onDeleteHandler = () => {
     console.log('delete');
-    const newBooks = booksData.books.filter((role) => role.id !== record.id);
+    const newBooks = booksData.data.filter(
+      (role: any) => role.id !== record.id
+    );
 
-    setBooksData({ books: newBooks, count: (booksData.count -= 1) });
+    setBooksData({ data: newBooks, count: (booksData.count -= 1) });
   };
 
   return (

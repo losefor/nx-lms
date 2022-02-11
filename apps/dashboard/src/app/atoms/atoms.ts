@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 interface Response {
-  count?: number;
+  count: number;
   data?: any;
 }
 
@@ -13,41 +13,19 @@ export const rolesState = atom<Response>({
   },
 });
 
-export const usersState = atom({
+export const usersState = atom<Response>({
   key: 'usersState',
   default: {
     count: 0,
-    data: [
-      {
-        id: '1',
-        arName: 'جامعة',
-        enName: 'University',
-      },
-      {
-        id: '2',
-        arName: 'طالب',
-        enName: 'Student',
-      },
-    ],
+    data: [],
   },
 });
 
-export const booksState = atom({
+export const booksState = atom<Response>({
   key: 'booksState',
   default: {
     count: 0,
-    books: [
-      {
-        id: '1',
-        arName: 'جامعة',
-        enName: 'University',
-      },
-      {
-        id: '2',
-        arName: 'طالب',
-        enName: 'Student',
-      },
-    ],
+    data: [],
   },
 });
 

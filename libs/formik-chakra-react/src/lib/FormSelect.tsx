@@ -24,10 +24,15 @@ export const FormSelect = ({ name, label, children, isRequired }: Props) => {
 
   // Detect if error happened
   const error = (touched as any)[name] && (errors as any)[name];
+  const value = (values as any)[name];
+
+  console.log(value);
+  
   return (
     <FormControl isRequired={isRequired} isInvalid={error}>
       <FormLabel>{label}</FormLabel>
       <Select
+        defaultValue={(values as any)[name]}
         value={(values as any)[name]}
         onChange={(e) => setFieldValue(name, e.target.value)}
       >

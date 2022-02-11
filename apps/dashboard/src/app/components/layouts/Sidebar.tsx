@@ -17,7 +17,10 @@ const Content = () => {
         dashRoutes.map((route, index) => {
           const path = route.layout + route.path;
 
-          if (!perms[route.permissions]?.includes('r')) {
+          if (
+            !perms[route.permissions]?.includes('r') &&
+            route.permissions !== 'none'
+          ) {
             return null;
           }
           return (
