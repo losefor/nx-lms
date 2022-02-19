@@ -1,4 +1,4 @@
-import { Flex, Icon } from '@chakra-ui/react';
+import { Flex, Icon, useColorModeValue } from '@chakra-ui/react';
 import { useMatch, useResolvedPath, useNavigate } from 'react-router-dom';
 import { colorParser } from '../utils/colorParser';
 
@@ -21,6 +21,13 @@ export const NavItemDefault = (props: Props) => {
 
   const { color, saturation } = colorParser(props.bgColor as string);
 
+  const bgColor = useColorModeValue(
+    `${color}.${saturation}`,
+    `${color}.${saturation - 200}`
+  );
+  const selectedTextColor = useColorModeValue(`white`, `gray.800`);
+  const notSelectedTextColor = useColorModeValue(`gray.800`, 'whiteAlpha.800');
+
   return (
     <Flex
       align="center"
@@ -28,8 +35,8 @@ export const NavItemDefault = (props: Props) => {
       pl="4"
       py="3"
       cursor="pointer"
-      color={match ? 'white' : 'inherit'}
-      bg={match ? `${color}.${saturation}` : 'inherit'}
+      color={match ? selectedTextColor : notSelectedTextColor}
+      bg={match ? bgColor : 'inherit'}
       _hover={{
         bg: match ? `${color}.${saturation + 100}` : 'gray.100',
         color: match ? 'white' : 'inherit',

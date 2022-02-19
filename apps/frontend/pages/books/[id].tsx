@@ -2,7 +2,6 @@ import {
   Container,
   Heading,
   Image,
-  SimpleGrid,
   Flex,
   Text,
   Divider,

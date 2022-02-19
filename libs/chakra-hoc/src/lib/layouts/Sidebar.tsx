@@ -8,6 +8,7 @@ import {
   Flex,
   IconButton,
   useColorModeValue,
+  useColorMode,
   useDisclosure,
   Menu,
   MenuButton,
@@ -15,7 +16,7 @@ import {
   MenuItem,
   MenuDivider,
 } from '@chakra-ui/react';
-import { FiLogOut, FiMenu, FiSettings } from 'react-icons/fi';
+import { FiLogOut, FiMenu, FiMoon, FiSettings, FiSun } from 'react-icons/fi';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -24,6 +25,7 @@ interface Props {
 }
 
 export function Sidebar({ children, sidebarContent }: Props) {
+  const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   const sidebar = useDisclosure();
 
@@ -81,6 +83,12 @@ export function Sidebar({ children, sidebarContent }: Props) {
               </MenuButton>
               <MenuList>
                 <MenuItem icon={<FiSettings />}>الاعدادات</MenuItem>
+                <MenuItem
+                  onClick={() => toggleColorMode()}
+                  icon={colorMode === 'light' ? <FiSun /> : <FiMoon />}
+                >
+                  تغيير الثيم
+                </MenuItem>
                 <MenuDivider />
                 <MenuItem
                   color="red.500"

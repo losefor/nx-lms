@@ -6,6 +6,8 @@ import { booksState } from '../atoms/atoms';
 import { CreateBookDrawer } from '../components/drawers/CreateBookDrawer';
 import { useEffect, useState } from 'react';
 import * as booksApi from '../api/books';
+import { Table as ChakraTable } from '@nx-lms/chakra-hoc';
+import { UpdateUserDrawer } from '../components/drawers/UpdateUsersDrawer';
 
 export function Books() {
   const [booksData, setBooksData] = useRecoilState(booksState);
@@ -30,16 +32,30 @@ export function Books() {
   };
 
   return (
-    <Table
-      title={() => <CreateBookDrawer />}
-      columns={columns}
-      dataSource={booksData.data}
-      pagination={{
-        total: booksData.count,
-        pageSize: query.take,
-        onChange: paginationHandler as any,
-      }}
-    />
+    <>
+      {/* <Table
+        title={() => <CreateBookDrawer />}
+        columns={columns}
+        dataSource={booksData.data}
+        pagination={{
+          total: booksData.count,
+          pageSize: query.take,
+          onChange: paginationHandler as any,
+        }}
+      /> */}
+
+      <ChakraTable
+        title={<CreateBookDrawer />}
+        columns={columns}
+        dataSource={booksData.data}
+        pagination={{
+          total: booksData.count,
+          pageSizeOptions: [10, 20, 30, 50, 100, 200, 300],
+          pageSize: query.take,
+          onChange: paginationHandler as any,
+        }}
+      />
+    </>
   );
 }
 
@@ -57,7 +73,7 @@ const ActionButtons = ({ record }: any) => {
 
   return (
     <ButtonGroup variant="solid" size="sm" spacing={2}>
-      {/* <UpdateUniversitiesDrawer record={record} /> */}
+      {/* <UpdateBo record={record} /> */}
 
       <RemoveModal
         header="حذف الكتاب"

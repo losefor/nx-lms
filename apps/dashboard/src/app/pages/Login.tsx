@@ -54,8 +54,14 @@ export default function Login() {
     >
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>تسجيل الدخول</Heading>
-          <Text fontSize={'lg'} color={'gray.600'} textAlign={'center'}>
+          <Text fontWeight={'bold'} fontSize={'4xl'}>
+            تسجيل الدخول
+          </Text>
+          <Text
+            fontSize={'lg'}
+            color={useColorModeValue('gray.600', 'gray.400')}
+            textAlign={'center'}
+          >
             منصة اداره المكتبات الخاصه بالجامعات العراقية
           </Text>
         </Stack>
@@ -66,7 +72,7 @@ export default function Login() {
           p={8}
         >
           <Stack spacing={'6'}>
-            <ButtonGroup isAttached variant={'outline'} width={'full'}>
+            {/* <ButtonGroup isAttached variant={'outline'} width={'full'}>
               <Button
                 bg={loginType === 'EMAIL' ? colors.primary : ''}
                 color={loginType === 'EMAIL' ? 'white' : ''}
@@ -91,7 +97,7 @@ export default function Login() {
               >
                 باستخدام الهاتف
               </Button>
-            </ButtonGroup>
+            </ButtonGroup> */}
             {loginType === 'SMS' ? (
               <PhoneNumberLoginForm onSubmit={loginHandler} />
             ) : (

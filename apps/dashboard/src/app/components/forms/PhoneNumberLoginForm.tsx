@@ -16,7 +16,11 @@ export function PhoneNumberLoginForm({ onSubmit }: Props) {
   return (
     <Form initialValues={initialValues} onSubmit={onSubmit}>
       <Stack spacing={6}>
-        <FormPhoneNumberInput label="رقم الهاتف" name="phoneNumber" />
+        <FormPhoneNumberInput
+          onPressEnterSubmit
+          label="رقم الهاتف"
+          name="phoneNumber"
+        />
         <FormButton>تسجيل الدخول</FormButton>
       </Stack>
     </Form>

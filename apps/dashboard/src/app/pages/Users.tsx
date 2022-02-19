@@ -9,7 +9,7 @@ import * as usersApi from '../api/users';
 import { useRecoilState } from 'recoil';
 import { usersState } from '../atoms/atoms';
 import { UpdateUserDrawer } from '../components/drawers/UpdateUsersDrawer';
-
+import { Table as ChakraTable } from '@nx-lms/chakra-hoc';
 export function Users() {
   const toast = useToast();
 
@@ -46,12 +46,19 @@ export function Users() {
         dataSource={users.data}
         rowKey="id"
       />
+
+      <ChakraTable
+        dataSource={users.data}
+        title={<CreateUniversitiesDrawer />}
+        columns={columns}
+      />
     </div>
   );
 }
 
 const ActionButtons = ({ record }: any) => {
-  console.log(record.enName);
+  console.log(record);
+
   const toast = useToast();
   const [users, setUsers] = useRecoilState(usersState);
 
