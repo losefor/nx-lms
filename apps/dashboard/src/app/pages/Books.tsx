@@ -1,6 +1,6 @@
 import { ButtonGroup } from '@chakra-ui/react';
 import { Table } from 'antd';
-import { RemoveModal } from '@nx-lms/chakra-hoc';
+import { DatePicker, DateRangePicker, RemoveModal } from '@nx-lms/chakra-hoc';
 import { useRecoilState } from 'recoil';
 import { booksState } from '../atoms/atoms';
 import { CreateBookDrawer } from '../components/drawers/CreateBookDrawer';
@@ -43,6 +43,9 @@ export function Books() {
           onChange: paginationHandler as any,
         }}
       /> */}
+
+      <DatePicker />
+      <DateRangePicker />
 
       <ChakraTable
         title={<CreateBookDrawer />}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DateRange, Range } from 'react-date-range';
+import { DateRange, Range ,  } from 'react-date-range';
 
 export function DateRangePicker() {
   const [state, setState] = useState<Range[]>([

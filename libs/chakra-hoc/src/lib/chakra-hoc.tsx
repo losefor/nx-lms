@@ -6,3 +6,4 @@ export * from './theme';
 export * from './utils';
 export * from './table';
 export * from './pagination';
+export * from './input';
