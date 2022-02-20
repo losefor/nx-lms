@@ -1,16 +1,13 @@
 import {
   Button,
   ButtonGroup,
-  Input,
-  InputGroup,
-  InputRightElement,
   Popover,
   PopoverArrow,
   PopoverContent,
   PopoverTrigger,
   useBoolean,
 } from '@chakra-ui/react';
-import { DateRange, Range } from 'react-date-range';
+import { DateRange } from 'react-date-range';
 import { FiCalendar } from 'react-icons/fi';
 
 import 'react-date-range/dist/styles.css'; // main style file
