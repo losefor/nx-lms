@@ -54,6 +54,9 @@ export function Books() {
           pageSize: query.take,
           onChange: paginationHandler as any,
         }}
+        rowSelection={{
+          onChange: (keys) => console.log(keys),
+        }}
       />
     </>
   );

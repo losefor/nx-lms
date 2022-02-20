@@ -51,14 +51,15 @@ export function Users() {
         dataSource={users.data}
         title={<CreateUniversitiesDrawer />}
         columns={columns}
+        rowSelection={{
+          onChange: (keys) => console.log(keys),
+        }}
       />
     </div>
   );
 }
 
 const ActionButtons = ({ record }: any) => {
-  console.log(record);
-
   const toast = useToast();
   const [users, setUsers] = useRecoilState(usersState);
 

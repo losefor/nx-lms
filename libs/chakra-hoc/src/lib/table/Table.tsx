@@ -26,11 +26,17 @@ interface Column {
   render?: (text: string, record: any) => React.ReactNode;
 }
 
+interface RowSelection {
+  selectedRowKeys?: string[];
+  onChange: (selectedRowKeys: string[]) => any;
+}
+
 interface Props {
   title?: React.ReactNode;
   columns?: Column[];
   dataSource?: any[];
   pagination?: any;
+  rowSelection?: RowSelection;
 }
 
 export function Table(props: Props) {
@@ -47,12 +53,17 @@ export function Table(props: Props) {
 
     // Add new key to the checked items
     if (isChecked) {
-      return setCheckedItems((val) => [...val, key]);
+      return setCheckedItems((val) => {
+        const newCheckedItems = [...val, key];
+        props.rowSelection?.onChange(newCheckedItems);
+        return newCheckedItems;
+      });
     }
 
     // Remove a kay from the checked items
-    const newKeys = checkedItems.filter((item) => item !== key);
-    setCheckedItems(newKeys);
+    const newCheckedItems = checkedItems.filter((item) => item !== key);
+    props.rowSelection?.onChange(newCheckedItems);
+    setCheckedItems(newCheckedItems);
   };
 
   return (
@@ -95,18 +106,22 @@ export function Table(props: Props) {
           bgColor={useColorModeValue('blackAlpha.50', 'blackAlpha.200')}
         >
           <Tr>
-            <Th px={5} pl={0}>
-              <Checkbox
-                colorScheme={'teal'}
-                isChecked={allChecked}
-                isIndeterminate={isIndeterminate}
-                onChange={(e) =>
-                  setCheckedItems(
-                    e.target.checked ? _.map(dataSource, 'id') : []
-                  )
-                }
-              />
-            </Th>
+            {/* Start:: Check all checkbox */}
+            {props.rowSelection && props.dataSource?.length ? (
+              <Th px={5} pl={0}>
+                <Checkbox
+                  colorScheme={'teal'}
+                  isChecked={allChecked}
+                  isIndeterminate={isIndeterminate}
+                  onChange={(e) =>
+                    setCheckedItems(
+                      e.target.checked ? _.map(dataSource, 'id') : []
+                    )
+                  }
+                />
+              </Th>
+            ) : null}
+            {/* End:: Check all checkbox */}
 
             {props?.columns?.map((col) => (
               <Th key={col.key}>
@@ -147,9 +162,18 @@ export function Table(props: Props) {
                   align={'center'}
                   justify={'center'}
                 >
-                  <Icon as={FiInbox} fontSize="6xl" />
+                  <Icon
+                    color={useColorModeValue('gray.400', 'gray.600')}
+                    as={FiInbox}
+                    fontSize="6xl"
+                  />
 
-                  <Text pt={2}>No data</Text>
+                  <Text
+                    color={useColorModeValue('gray.400', 'gray.600')}
+                    pt={2}
+                  >
+                    No data
+                  </Text>
                 </Flex>
               </Td>
             </Tr>
@@ -158,6 +182,12 @@ export function Table(props: Props) {
           {dataSource.map((dataItem, tid) => {
             return (
               <Tr
+                bgColor={
+                  checkedItems.includes(dataItem['id'])
+                    ? useColorModeValue('gray.100', 'gray.900')
+                    : 'unset'
+                }
+                transition={'.3s all'}
                 key={tid}
                 display={{
                   base: 'grid',
@@ -171,13 +201,17 @@ export function Table(props: Props) {
                   gridGap: '10px',
                 }}
               >
-                <Td px={5} pl={0} width={'50px'}>
-                  <Checkbox
-                    colorScheme={'teal'}
-                    isChecked={checkedItems.includes(dataItem['id'])}
-                    onChange={(e) => onBulkChangeHandler(e, dataItem['id'])}
-                  />
-                </Td>
+                {/* Start:: Check item checkbox */}
+                {props.rowSelection && (
+                  <Td px={5} pl={0} width={'50px'}>
+                    <Checkbox
+                      colorScheme={'teal'}
+                      isChecked={checkedItems.includes(dataItem['id'])}
+                      onChange={(e) => onBulkChangeHandler(e, dataItem['id'])}
+                    />
+                  </Td>
+                )}
+                {/* End:: Check item checkbox */}
 
                 {props.columns?.map((col) => {
                   return (
@@ -205,7 +239,12 @@ export function Table(props: Props) {
                       {/* End:: Mobile table head */}
 
                       {/* Start:: Table body */}
-                      <Td color={'gray.500'} fontSize="md" fontWeight="medium">
+                      <Td
+                        color={useColorModeValue('gray.700', 'gray.400')}
+                        
+                        fontSize="md"
+                        fontWeight="medium"
+                      >
                         {/* Start:: Normal col */}
                         {!dataItem[col.dataIndex as string] && !col.render
                           ? '--------'
