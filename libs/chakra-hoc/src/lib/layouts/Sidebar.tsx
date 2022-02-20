@@ -40,6 +40,7 @@ export function Sidebar({ children, sidebarContent }: Props) {
 
       {/* Start:: Mobile Sidebar */}
       <Drawer
+        closeOnEsc
         isOpen={sidebar.isOpen}
         onClose={sidebar.onClose}
         placement="right"

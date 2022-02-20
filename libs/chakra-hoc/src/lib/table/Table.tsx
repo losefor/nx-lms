@@ -203,13 +203,34 @@ export function Table(props: Props) {
               >
                 {/* Start:: Check item checkbox */}
                 {props.rowSelection && (
-                  <Td px={5} pl={0} width={'50px'}>
-                    <Checkbox
-                      colorScheme={'teal'}
-                      isChecked={checkedItems.includes(dataItem['id'])}
-                      onChange={(e) => onBulkChangeHandler(e, dataItem['id'])}
-                    />
-                  </Td>
+                  <>
+                    <Td
+                      display={['block', 'none']}
+                      sx={{
+                        '@media print': {
+                          display: 'none',
+                        },
+                        textTransform: 'uppercase',
+                        color: 'gray.400',
+                        fontSize: 'xs',
+                        fontWeight: 'bold',
+                        letterSpacing: 'wider',
+                        fontFamily: 'heading',
+                      }}
+                      px={5}
+                      pl={0}
+                      width={'100px'}
+                    >
+                      تحديد
+                    </Td>
+                    <Td px={5} pl={0} width={'50px'}>
+                      <Checkbox
+                        colorScheme={'teal'}
+                        isChecked={checkedItems.includes(dataItem['id'])}
+                        onChange={(e) => onBulkChangeHandler(e, dataItem['id'])}
+                      />
+                    </Td>
+                  </>
                 )}
                 {/* End:: Check item checkbox */}
 
@@ -217,6 +238,7 @@ export function Table(props: Props) {
                   return (
                     <React.Fragment key={`${tid}-${col.key}`}>
                       {/* Start:: Mobile table head */}
+
                       <Td
                         display={{
                           base: 'table-cell',
@@ -241,7 +263,6 @@ export function Table(props: Props) {
                       {/* Start:: Table body */}
                       <Td
                         color={useColorModeValue('gray.700', 'gray.400')}
-                        
                         fontSize="md"
                         fontWeight="medium"
                       >
