@@ -1,4 +1,12 @@
-import { ButtonGroup, IconButton, Tooltip, useToast } from '@chakra-ui/react';
+import {
+  Avatar,
+  ButtonGroup,
+  HStack,
+  IconButton,
+  Text,
+  Tooltip,
+  useToast,
+} from '@chakra-ui/react';
 import { Table } from 'antd';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 import { CreateUniversitiesDrawer } from '../components/drawers/CreateUsersDrawer';
@@ -40,12 +48,12 @@ export function Users() {
 
   return (
     <div>
-      <Table
+      {/* <Table
         title={() => <CreateUniversitiesDrawer />}
         columns={columns}
         dataSource={users.data}
         rowKey="id"
-      />
+      /> */}
 
       <ChakraTable
         dataSource={users.data}
@@ -116,7 +124,13 @@ const columns = [
   {
     title: 'اسم المستخدم',
     key: 'arName',
-    dataIndex: 'arName',
+    // dataIndex: 'arName',
+    render: (text: any, record: any) => (
+      <HStack>
+        <Avatar size={'sm'} />
+        <Text>{record['arName']}</Text>
+      </HStack>
+    ),
   },
   {
     title: 'نوع المستخدم',

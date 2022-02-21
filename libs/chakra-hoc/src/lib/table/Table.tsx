@@ -41,6 +41,7 @@ interface Props {
 
 export function Table(props: Props) {
   const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
   const [checkedItems, setCheckedItems] = React.useState<string[]>([]);
 
   const dataSource = props.dataSource || [];
@@ -81,7 +82,7 @@ export function Table(props: Props) {
         borderBottomRadius={'lg'}
         borderTopRadius={!props.title ? 'lg' : 'unset'}
         w="full"
-        bg={bgColor}
+        bg={['transparent', bgColor]}
         display={{
           base: 'block',
           md: 'table',
@@ -114,9 +115,16 @@ export function Table(props: Props) {
                   isChecked={allChecked}
                   isIndeterminate={isIndeterminate}
                   onChange={(e) =>
-                    setCheckedItems(
-                      e.target.checked ? _.map(dataSource, 'id') : []
-                    )
+                    setCheckedItems(() => {
+                      // new state of checked items
+                      const checkedItems = e.target.checked
+                        ? _.map(dataSource, 'id')
+                        : [];
+
+                      props.rowSelection?.onChange(checkedItems);
+
+                      return checkedItems;
+                    })
                   }
                 />
               </Th>
@@ -199,6 +207,12 @@ export function Table(props: Props) {
                   },
                   gridTemplateColumns: 'minmax(0px, 35%) minmax(0px, 65%)',
                   gridGap: '10px',
+                  my: '20px',
+                  bgColor,
+                  borderRadius: 'lg',
+                  boxShadow: 'sm',
+                  border: 'thin solid #eee',
+                  borderColor,
                 }}
               >
                 {/* Start:: Check item checkbox */}
