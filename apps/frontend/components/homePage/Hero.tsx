@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   createIcon,
 } from '@chakra-ui/react';
+import { SectionScroll } from '../SectionScroll';
 
 export function Hero() {
   return (
@@ -81,6 +82,8 @@ export function Hero() {
               </Text>
             </Box>
           </Stack>
+          {/* Scroll To Next Section */}
+          <SectionScroll to="#section2">بم نتميز</SectionScroll>
         </Stack>
       </Container>
     </>

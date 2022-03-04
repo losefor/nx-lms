@@ -1,4 +1,5 @@
-import { useColorModeValue as mode, Box, Flex } from '@chakra-ui/react';
+import { useColorModeValue as mode, Box, Flex, HStack } from '@chakra-ui/react';
+import { FiArrowLeft } from 'react-icons/fi';
 
 interface SidebarContentProps {
   title: React.ReactNode;
@@ -33,7 +34,10 @@ export function SidebarContent({ title, children, ...rest }: any) {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        {children}
+        <HStack>
+          {children}
+          <FiArrowLeft />
+        </HStack>
       </Flex>
     </Box>
   );

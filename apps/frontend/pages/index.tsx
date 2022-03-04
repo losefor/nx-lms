@@ -4,23 +4,35 @@ import { Hero } from '../components/homePage/Hero';
 import { ThreeTierPricing } from '../components/homePage/ThreeTierPricing';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { Box, Container, Divider } from '@chakra-ui/react';
+import { Box, Container, Divider, VStack } from '@chakra-ui/react';
 import Features from '../components/homePage/Features';
+import { SectionScroll } from '../components/SectionScroll';
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <>
       <Hero />
 
       <Container maxW={'6xl'}>
-        <Box height={['unset', '100vh']}>
+        <VStack
+          align={'center'}
+          justify={'center'}
+          id="section2"
+          height={['unset', '100vh']}
+        >
           <Features />
-        </Box>
-        <Box height={['unset', '100vh']}>
+          <SectionScroll to="#section3">الاسعار</SectionScroll>
+        </VStack>
+        <VStack
+          align={'center'}
+          justify={'center'}
+          id="section3"
+          height={['unset', '100vh']}
+        >
           <ThreeTierPricing />
-        </Box>
+        </VStack>
       </Container>
-    </div>
+    </>
   );
 };
 

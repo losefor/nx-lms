@@ -1,10 +1,5 @@
 import { Home, Roles, Users } from './app/pages';
-import {
-  FaBook,
-  FaBuilding,
-  FaChalkboardTeacher,
-  FaUserAlt,
-} from 'react-icons/fa';
+import { FaBook, FaUserAlt } from 'react-icons/fa';
 import { MdLock, MdSpaceDashboard } from 'react-icons/md';
 import Login from './app/pages/Login';
 import { Books } from './app/pages/Books';

@@ -71,7 +71,12 @@ export function Table(props: Props) {
     <Flex direction={'column'} overflow={'hidden'}>
       {/* Start:: Title section */}
       {props.title !== undefined && (
-        <Box borderTopRadius={'lg'} p={4} bgColor={bgColor}>
+        <Box
+          borderTopRadius={'lg'}
+          borderBottomRadius={[ 'lg', 'unset']}
+          p={4}
+          bgColor={bgColor}
+        >
           {props.title}
         </Box>
       )}
