@@ -34,10 +34,7 @@ export function SidebarContent({ title, children, ...rest }: any) {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <HStack>
-          {children}
-          <FiArrowLeft />
-        </HStack>
+        {children}
       </Flex>
     </Box>
   );

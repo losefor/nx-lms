@@ -43,9 +43,9 @@ export function Books() {
           onChange: paginationHandler as any,
         }}
       /> */}
-
+      {/* 
       <DatePicker />
-      <DateRangePicker />
+      <DateRangePicker /> */}
 
       <ChakraTable
         title={<CreateBookDrawer />}
@@ -57,9 +57,9 @@ export function Books() {
           pageSize: query.take,
           onChange: paginationHandler as any,
         }}
-        rowSelection={{
-          onChange: (keys) => console.log(keys),
-        }}
+        // rowSelection={{
+        //   onChange: (keys) => console.log(keys),
+        // }}
       />
     </>
   );

@@ -14,6 +14,7 @@ import { RemoveModal } from '@nx-lms/chakra-hoc';
 import { useRecoilState } from 'recoil';
 import { rolesState } from '../atoms/atoms';
 import * as rolesApi from '../api/roles';
+import { Table as ChakraTable } from '@nx-lms/chakra-hoc';
 
 export function Roles() {
   const toast = useToast();
@@ -22,7 +23,7 @@ export function Roles() {
   const [query] = useState({ skip: 0, take: 10 });
 
   return (
-    <Table
+    <ChakraTable
       title={() => (
         <Flex justifyContent={'flex-end'}>
           <CreateRoleDrawer />
@@ -30,7 +31,6 @@ export function Roles() {
       )}
       columns={columns}
       dataSource={rolesData.data}
-      rowKey="id"
     />
   );
 }

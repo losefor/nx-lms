@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import styles from '../styles/Home.module.css';
 import { Hero } from '../components/homePage/Hero';
 import { ThreeTierPricing } from '../components/homePage/ThreeTierPricing';
 import 'react-date-range/dist/styles.css'; // main css file

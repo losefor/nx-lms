@@ -13,6 +13,7 @@ import React from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { colorParser } from '@nx-lms/chakra-hoc';
 import { BookCard } from '../../components/BookCard';
+import { useRouter } from 'next/router';
 
 interface Category {
   id: string;
@@ -79,8 +80,9 @@ const CategoryItem = ({
   );
 };
 
-export default function index() {
+export default function BooksHomePage() {
   const SIDE_BAR_WIDTH = 60;
+  const router = useRouter();
 
   return (
     <div>
@@ -109,6 +111,7 @@ export default function index() {
       <Flex direction={'column'} ms={SIDE_BAR_WIDTH}>
         {books.map((book) => (
           <BookCard
+            onClick={() => router.push(`/books/${book.id}`)}
             title={book.arName}
             description={book.description}
             key={book.id}

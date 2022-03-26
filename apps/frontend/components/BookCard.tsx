@@ -7,6 +7,7 @@ import {
   Link,
   HStack,
   Button,
+  Text,
 } from '@chakra-ui/react';
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
   description: string;
   offerType: string;
   type: string;
+  onClick: () => any;
 }
 
 export const BookCard = (props: Props) => {
@@ -37,14 +39,14 @@ export const BookCard = (props: Props) => {
         bg={useColorModeValue('white', 'gray.800')}
         width={'full'}
       >
-        <Flex justifyContent="space-between" alignItems="center">
+        <Flex justifyContent="end" alignItems="center">
           <chakra.span
             fontSize="sm"
             color={useColorModeValue('gray.600', 'gray.400')}
           >
             Mar 10, 2019
           </chakra.span>
-          <HStack>
+          {/* <HStack>
             <Link
               px={3}
               py={1}
@@ -60,7 +62,7 @@ export const BookCard = (props: Props) => {
             <Button
               px={3}
               py={1}
-              size={"sm"}
+              size={'sm'}
               bg="gray.600"
               color="gray.100"
               fontSize="sm"
@@ -70,11 +72,11 @@ export const BookCard = (props: Props) => {
             >
               {props.offerType}
             </Button>
-          </HStack>
+          </HStack> */}
         </Flex>
 
         <Box mt={2}>
-          <Link
+          <Text
             fontSize="2xl"
             color={useColorModeValue('gray.700', 'white')}
             fontWeight="700"
@@ -82,9 +84,11 @@ export const BookCard = (props: Props) => {
               color: useColorModeValue('gray.600', 'gray.200'),
               textDecor: 'underline',
             }}
+            cursor="pointer"
+            onClick={props.onClick}
           >
             {props.title}
-          </Link>
+          </Text>
           <chakra.p mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
             {props.description}
           </chakra.p>
