@@ -9,10 +9,14 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  HStack,
 } from '@chakra-ui/react';
 import { SectionScroll } from '../SectionScroll';
+import { useRouter } from 'next/router';
 
 export function Hero() {
+  const router = useRouter();
+
   return (
     <>
       <Container maxW={'4xl'} fontFamily={'Cairo'}>
@@ -47,17 +51,27 @@ export function Hero() {
             alignSelf={'center'}
             position={'relative'}
           >
-            <Button
-              as="a"
-              bg={'teal.400'}
-              color={'white'}
-              _hover={{ bg: 'teal.500' }}
-              rounded={'full'}
-              px={6}
-              href="#pricings"
-            >
-              ابدا الان
-            </Button>
+            <HStack>
+              <Button
+                as="a"
+                colorScheme={'teal'}
+                rounded={'lg'}
+                // px={6}
+                href="#pricings"
+                width={"32"}
+              >
+                ابدا الان
+              </Button>
+              <Button
+                as="a"
+                rounded={'md'}
+                variant={'outline'}
+                // px={6}
+                onClick={() => router.push('/libraries')}
+              >
+                تصفح المكتبات
+              </Button>
+            </HStack>
 
             <Box>
               <Icon
