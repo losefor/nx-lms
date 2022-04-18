@@ -273,30 +273,30 @@ interface NavItem {
 }
 
 const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: 'خدماتنا',
-    hideOnHome: false,
-    children: [
-      {
-        label: 'المكتبه المركزيه',
-        subLabel: 'ابحث عن ما تريد مع كل الكتب',
-        href: '#',
-        hideOnHome: true,
-      },
-      {
-        label: 'المكتبات المتوفرة',
-        subLabel: 'تصفح المكتبات المتوفر على المنصة',
-        href: '/libraries',
-        hideOnHome: false,
-      },
-      {
-        label: 'الاطروحات',
-        subLabel: 'تابع احدث الدراسات من مختلف الجامعات العراقية',
-        href: '#',
-        hideOnHome: false,
-      },
-    ],
-  },
+  // {
+  //   label: 'خدماتنا',
+  //   hideOnHome: false,
+  //   children: [
+  //     {
+  //       label: 'المكتبه المركزيه',
+  //       subLabel: 'ابحث عن ما تريد مع كل الكتب',
+  //       href: '#',
+  //       hideOnHome: true,
+  //     },
+  //     {
+  //       label: 'المكتبات المتوفرة',
+  //       subLabel: 'تصفح المكتبات المتوفر على المنصة',
+  //       href: '/libraries',
+  //       hideOnHome: false,
+  //     },
+  //     {
+  //       label: 'الاطروحات',
+  //       subLabel: 'تابع احدث الدراسات من مختلف الجامعات العراقية',
+  //       href: '#',
+  //       hideOnHome: false,
+  //     },
+  //   ],
+  // },
   {
     label: 'من نحن؟',
     hideOnHome: false,
