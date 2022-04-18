@@ -25,11 +25,14 @@ import {
   FaHamburger,
 } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { FiMenu } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function Nav() {
   const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
+
+  const hideRoutes = ['/', '/libraries', '/about-us'];
+  const isOnHideRoute = hideRoutes.includes(router.pathname);
 
   console.log(router.pathname);
 
@@ -53,19 +56,22 @@ export default function Nav() {
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
-            <Avatar onClick={() => router.push('/')} src={'/uot2.png'} />
+            <Avatar
+              onClick={() => router.push('/')}
+              src={isOnHideRoute ? '' : '/uot2.png'}
+            />
             {/* Start:: Hamburger icon */}
             <Flex
               flex={{ base: 1, md: 'auto' }}
               ml={{ base: -2 }}
               display={{ base: 'flex', md: 'none' }}
-              justify={'center'}
+              justify={'end'}
             >
               <IconButton
                 onClick={onToggle}
                 icon={
                   isOpen ? (
-                    <Icon as={FaCross} w={3} h={3} />
+                    <Icon as={FiX} fontSize={24} />
                   ) : (
                     <Icon as={FiMenu} w={5} h={5} />
                   )
@@ -105,7 +111,6 @@ const DesktopNav = () => {
   const router = useRouter();
 
   const hideRoutes = ['/', '/libraries'];
-
   const isOnHideRoute = hideRoutes.includes(router.pathname);
 
   return (

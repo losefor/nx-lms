@@ -56,9 +56,9 @@ export function Hero() {
                 as="a"
                 colorScheme={'teal'}
                 rounded={'lg'}
-                // px={6}
                 href="#pricings"
-                width={"32"}
+                width={'32'}
+                onClick={() => router.push('/contact-us')}
               >
                 ابدا الان
               </Button>
@@ -66,7 +66,6 @@ export function Hero() {
                 as="a"
                 rounded={'md'}
                 variant={'outline'}
-                // px={6}
                 onClick={() => router.push('/libraries')}
               >
                 تصفح المكتبات
