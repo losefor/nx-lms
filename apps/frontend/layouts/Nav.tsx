@@ -49,17 +49,11 @@ export default function Nav() {
         <Container maxW={'4xl'} alignItems={'center'}>
           <Flex align="center" justify={'space-between'}>
             {/* Start:: Right side nav  */}
-            <HStack
-              spacing={4}
-              align={'center'}
-              justify={{ base: 'center', md: 'start' }}
-            >
-              <Avatar src={'/uot2.png'} />
 
-              <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-                <DesktopNav />
-              </Flex>
-            </HStack>
+            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+              <DesktopNav />
+            </Flex>
+            <Avatar onClick={() => router.push('/')} src={'/uot2.png'} />
             {/* Start:: Hamburger icon */}
             <Flex
               flex={{ base: 1, md: 'auto' }}
@@ -82,7 +76,7 @@ export default function Nav() {
             </Flex>
 
             {/* Start:: Left side nav  */}
-            <Button
+            {/* <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
@@ -92,7 +86,7 @@ export default function Nav() {
               onClick={() => router.push('/auth/login')}
             >
               تسجيل الدخول
-            </Button>
+            </Button> */}
           </Flex>
         </Container>
       </Flex>
@@ -306,6 +300,6 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'من نحن؟',
     hideOnHome: false,
-    href: '#',
+    href: '/about-us',
   },
 ];

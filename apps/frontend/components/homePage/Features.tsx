@@ -76,25 +76,22 @@ export default function Features() {
             gridRowGap={{ md: 10 }}
           >
             <Feature title="نظام اداره الطلاب" icon={FiUser}>
-              قم باداره الطلاب مع نظام 
+              قم باداره طلابك مع داشبورد متميزه وسهلة جداو تباع نشاطاتهم اول
+              باول
             </Feature>
 
             <Feature title="نظام اداره الاساتذه" icon={FiUsers}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis ratione.
+              اداره الاساتذه وتحكم بصلاحيات دخولهم ونشاطاتهم على المنصة وتفاعلهم
+              مع الطلاب
             </Feature>
 
-            <Feature title="نظام اداره الكتب" icon={FiBook}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis ratione.
+            <Feature title="نظام اداره الاطاريح" icon={FiBook}>
+              يمكنك من رفع الاطاريح الخاصة بجامعتك ونشرها
             </Feature>
 
             <Feature title="نظام اداره المدفوعات" icon={FiDollarSign}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate
-              blanditiis ratione.
+              تمكن من بيع الكتب من خلال واجهة المتسخدم السهلة وتابع حالات
+              الطلبات اول باول
             </Feature>
           </Stack>
         </Box>

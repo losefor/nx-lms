@@ -72,13 +72,12 @@ export function Hero() {
                 fontSize={'lg'}
                 fontFamily={'Cairo'}
                 position={'absolute'}
-                right={'-150px'}
+                right={'-120px'}
                 top={'-15px'}
                 transform={'rotate(14deg)'}
               >
-                ابتداءً من
-                <b> 30 الف د.ع </b>
-                شهريا
+                ابدا الان
+                <b> مجانا </b>
               </Text>
             </Box>
           </Stack>

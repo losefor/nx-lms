@@ -20,14 +20,14 @@ export function FormUpload({ name, label }: FormUploadProps) {
         borderRadius="lg"
         border="dashed"
         borderColor={error ? 'red.400' : 'gray.300'}
+        _hover={{
+          borderColor: 'gray.300',
+        }}
         borderWidth="thin"
         transition=".3s"
         justify={'center'}
         align={'center'}
         direction={'column'}
-        _hover={{
-          borderColor: 'gray.300',
-        }}
       >
         <Icon
           fontSize={'lg'}
