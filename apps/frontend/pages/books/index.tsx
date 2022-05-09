@@ -14,6 +14,8 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { colorParser } from '@nx-lms/chakra-hoc';
 import { BookCard } from '../../components/BookCard';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
+import * as categoryApi from '../../api/categories';
 
 interface Category {
   id: string;
@@ -23,7 +25,7 @@ interface Category {
 
 const CategoryItem = ({
   isSubcategory,
-  lable,
+  label,
   subcategories,
   bgColor,
   ...rest
@@ -42,7 +44,7 @@ const CategoryItem = ({
       >
         <Box padding={'2'} cursor={'pointer'}>
           <Text color={'gray.600'} fontWeight={isOpen && 'bold'}>
-            {lable}
+            {label}
           </Text>
         </Box>
         {subcategories && (
@@ -69,7 +71,7 @@ const CategoryItem = ({
               ps={PADDING_START}
               isSubcategory
               key={index}
-              lable={category.name}
+              label={category.arName}
               subcategories={category.children}
               bgColor={'gray.50'}
               _hover={{ bgColor: 'gray.100' }}
@@ -84,6 +86,12 @@ export default function BooksHomePage() {
   const SIDE_BAR_WIDTH = 60;
   const router = useRouter();
 
+  const { data, isLoading, error } = useQuery<any>('categoryData', async () => {
+    return await categoryApi.findMany();
+  });
+
+  console.log({ data });
+
   return (
     <div>
       <Flex
@@ -95,16 +103,17 @@ export default function BooksHomePage() {
         position={'absolute'}
         bgColor={'white'}
       >
-        {categories.map((category, index) => (
-          <CategoryItem
-            ps={0}
-            isSubcategory={false}
-            bgColor={'white'}
-            key={index}
-            lable={category.name}
-            subcategories={category.children}
-          />
-        ))}
+        {!isLoading &&
+          data.data.map((category, index) => (
+            <CategoryItem
+              ps={0}
+              isSubcategory={false}
+              bgColor={'white'}
+              key={index}
+              label={category.arName}
+              subcategories={category.children}
+            />
+          ))}
       </Flex>
 
       {/* Start:: holder */}

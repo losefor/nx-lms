@@ -15,16 +15,22 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+
+const queryClient = new QueryClient();
+
 import Nav from '../layouts/Nav';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraRtlProvider>
-      <ChakraProvider theme={theme}>
-        <Nav />
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </ChakraRtlProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraRtlProvider>
+        <ChakraProvider theme={theme}>
+          <Nav />
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </ChakraRtlProvider>
+    </QueryClientProvider>
   );
 }
 

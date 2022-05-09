@@ -3,7 +3,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -12,18 +11,13 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Container,
   Avatar,
+  Image,
   HStack,
 } from '@chakra-ui/react';
-import {
-  FaChevronDown,
-  FaChevronLeft,
-  FaCross,
-  FaHamburger,
-} from 'react-icons/fa';
+import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { FiMenu, FiX } from 'react-icons/fi';
 
@@ -31,7 +25,7 @@ export default function Nav() {
   const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
 
-  const hideRoutes = ['/', '/libraries', '/about-us'];
+  const hideRoutes = ['/', '/libraries', '/about-us', '/contact-us'];
   const isOnHideRoute = hideRoutes.includes(router.pathname);
 
   console.log(router.pathname);
@@ -56,10 +50,18 @@ export default function Nav() {
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
             </Flex>
-            <Avatar
-              onClick={() => router.push('/')}
-              src={isOnHideRoute ? '' : '/uot2.png'}
-            />
+
+            {isOnHideRoute ? (
+              <HStack>
+                <Text fontSize={'2xl'} fontWeight={'extrabold'}>
+                  Maktabaty
+                </Text>
+                <Image aria-label="logo" src="/lib.png" boxSize={12} />
+              </HStack>
+            ) : (
+              <Avatar onClick={() => router.push('/')} src={'/uot2.png'} />
+            )}
+
             {/* Start:: Hamburger icon */}
             <Flex
               flex={{ base: 1, md: 'auto' }}
@@ -125,7 +127,7 @@ const DesktopNav = () => {
               <PopoverTrigger>
                 <Link
                   p={2}
-                  href={navItem.href ?? '#'}
+                  onClick={() => router.push(navItem.href)}
                   fontSize={'sm'}
                   fontWeight={500}
                   color={linkColor}
